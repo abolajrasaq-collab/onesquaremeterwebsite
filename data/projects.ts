@@ -33,6 +33,7 @@ export interface ProjectData {
     paymentPlans?: { name: string; duration: string; deposit: string; monthly: string; total: string }[];
     investorCount?: number;
     fundedPercentage?: number;
+    glbUrl?: string;
     // Rich detail fields
     amenities?: { category: string; items: string[] }[];
     neighborhood?: { name: string; distance: string; type: string }[];
@@ -143,6 +144,7 @@ export const projects: Record<string, ProjectData> = {
             { label: '4.5 Bathrooms', icon: 'bath' }
         ],
         logo: '/images/mretro-logo-1024x315.png',
+        glbUrl: '/psx_house.glb',
         minInvestment: 'N10 Million',
         expectedYield: 8.5,
         appreciationRate: 12,
