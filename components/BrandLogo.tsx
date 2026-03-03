@@ -76,6 +76,7 @@ const BrandLogo: React.FC<BrandLogoProps> = ({
         >
           One Square Meter
         </div>
+        <span className={`text-[0.5em] opacity-60 tracking-widest mt-1 ${mainTextColor}`}>by Dantata</span>
       </div>
     );
   }
@@ -91,6 +92,7 @@ const BrandLogo: React.FC<BrandLogoProps> = ({
         <span>One</span>
         <span>Square</span>
         <span>Meter</span>
+        <span className="text-[0.4em] opacity-60 tracking-widest mt-0.5 normal-case font-light">by Dantata</span>
       </div>
     </div>
   );

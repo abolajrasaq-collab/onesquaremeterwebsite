@@ -9,19 +9,60 @@ import {
     ShieldCheck, Landmark, Zap, Wrench, GraduationCap, ShoppingBag, Heart, Bus, Building2, Ruler
 } from 'lucide-react';
 import { projects } from '../data/projects';
+import Project3DViewer from '../components/Project3DViewer';
+import SplatViewer from '../components/SplatViewer';
+import { useData } from '../context/DataContext';
 
 const ProjectDetail: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
+    const { submitInquiry } = useData();
     const project = slug ? projects[slug] : null;
+
+    // UI State
     const [selectedUnit, setSelectedUnit] = useState<null | typeof projects[string]['units'][number]>(null);
     const [showInquiry, setShowInquiry] = useState(false);
     const [inquiryUnit, setInquiryUnit] = useState<string>('');
     const [lightboxImg, setLightboxImg] = useState<string | null>(null);
     const [unitGalleryIdx, setUnitGalleryIdx] = useState(0);
+    const [activeTab, setActiveTab] = useState('overview');
+    const [view3DMode, setView3DMode] = useState<'spline' | 'splat'>('spline');
+
+    // Form State
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        interest: 'Outright Purchase',
+        message: ''
+    });
 
     // Investment Calculator state
     const [calcAmount, setCalcAmount] = useState(50000000);
     const [calcYears, setCalcYears] = useState(3);
+
+    const handleInquirySubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        if (project) {
+            await submitInquiry({
+                projectId: project.id,
+                unit: inquiryUnit,
+                userName: `${formData.firstName} ${formData.lastName}`,
+                userEmail: formData.email,
+                userPhone: formData.phone,
+                message: `${formData.interest} - ${formData.message}`
+            });
+        }
+
+        setIsSubmitting(false);
+        setShowInquiry(false);
+        alert('Thank you for your inquiry! Our investment team will contact you within 24 hours.');
+        // Reset form
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', interest: 'Outright Purchase', message: '' });
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -118,10 +159,69 @@ const ProjectDetail: React.FC = () => {
                 <div className="flex flex-col gap-16">
                     {/* Main Content */}
                     <div className="w-full">
-                        <div className="prose prose-lg text-slate-600 mb-12">
-                            <h3 className="text-2xl font-bold text-[#325074] mb-4">Overview</h3>
-                            <p className="leading-relaxed">{project.description}</p>
+                        {/* Tabs Navigation */}
+                        <div className="flex items-center gap-6 border-b border-slate-200 mb-8 overflow-x-auto">
+                            {[
+                                { id: 'overview', label: 'Overview' },
+                                { id: 'virtual', label: 'Virtual Tour', icon: <Maximize2 size={16} /> },
+                                { id: 'amenities', label: 'Amenities' },
+                                { id: 'location', label: 'Neighborhood' }
+                            ].map(tab => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`relative pb-4 text-sm font-bold uppercase tracking-widest whitespace-nowrap flex items-center gap-2 transition-colors ${activeTab === tab.id ? 'text-[#325074]' : 'text-slate-400 hover:text-[#325074]'}`}
+                                >
+                                    {tab.icon}
+                                    {tab.label}
+                                    {activeTab === tab.id && (
+                                        <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 w-full h-1 bg-[#FEC12C]" />
+                                    )}
+                                </button>
+                            ))}
                         </div>
+
+                        {/* Tab Content: Overview */}
+                        {activeTab === 'overview' && (
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+                                <div className="prose prose-lg text-slate-600 mb-12">
+                                    <h3 className="text-2xl font-bold text-[#325074] mb-4">Project Overview</h3>
+                                    <p className="leading-relaxed">{project.description}</p>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {/* Tab Content: Virtual Tour */}
+                        {activeTab === 'virtual' && (
+                            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-12">
+                                <div className="flex justify-between items-center mb-6">
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-[#325074]">Interactive 3D Walkthrough</h3>
+                                        <p className="text-slate-500">Explore the architecture and layout of {project.title}.</p>
+                                    </div>
+                                    <div className="flex bg-slate-100 p-1 rounded-lg">
+                                        <button
+                                            onClick={() => setView3DMode('spline')}
+                                            className={`px-4 py-2 rounded-md text-xs font-bold uppercase tracking-widest transition-all ${view3DMode === 'spline' ? 'bg-[#325074] text-white shadow-md' : 'text-slate-500 hover:text-[#325074]'}`}
+                                        >
+                                            Standard 3D
+                                        </button>
+                                        <button
+                                            onClick={() => setView3DMode('splat')}
+                                            className={`px-4 py-2 rounded-md text-xs font-bold uppercase tracking-widest transition-all ${view3DMode === 'splat' ? 'bg-[#FEC12C] text-[#325074] shadow-md' : 'text-slate-500 hover:text-[#325074]'}`}
+                                        >
+                                            Gaussian Splat (HQ)
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {view3DMode === 'spline' ? (
+                                    <Project3DViewer />
+                                ) : (
+                                    <SplatViewer url="/sam3d-splat.ply" />
+                                )}
+                            </motion.div>
+                        )}
 
                         {/* Investment Highlights (new) */}
                         {project.expectedYield && (
@@ -710,35 +810,52 @@ const ProjectDetail: React.FC = () => {
                             </div>
                         </div>
 
-                        <form
-                            className="p-8 space-y-5"
-                            onSubmit={(e) => {
-                                e.preventDefault();
-                                alert('Thank you for your inquiry! Our investment team will contact you within 24 hours.');
-                                setShowInquiry(false);
-                            }}
-                        >
+                        <form className="p-8 space-y-5" onSubmit={handleInquirySubmit}>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">First Name</label>
-                                    <input type="text" required placeholder="Amara" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]" />
+                                    <input
+                                        type="text" required placeholder="Amara"
+                                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]"
+                                        value={formData.firstName}
+                                        onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Last Name</label>
-                                    <input type="text" required placeholder="Ibrahim" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]" />
+                                    <input
+                                        type="text" required placeholder="Ibrahim"
+                                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]"
+                                        value={formData.lastName}
+                                        onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                                    />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email</label>
-                                <input type="email" required placeholder="amara@example.com" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]" />
+                                <input
+                                    type="email" required placeholder="amara@example.com"
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]"
+                                    value={formData.email}
+                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Phone</label>
-                                <input type="tel" required placeholder="+234 800 000 0000" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]" />
+                                <input
+                                    type="tel" required placeholder="+234 800 000 0000"
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]"
+                                    value={formData.phone}
+                                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Investment Interest</label>
-                                <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]">
+                                <select
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C]"
+                                    value={formData.interest}
+                                    onChange={e => setFormData({ ...formData, interest: e.target.value })}
+                                >
                                     <option>Outright Purchase</option>
                                     <option>Payment Plan</option>
                                     <option>Joint Investment</option>
@@ -747,14 +864,20 @@ const ProjectDetail: React.FC = () => {
                             </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Message (optional)</label>
-                                <textarea rows={3} placeholder="Tell us about your investment goals..." className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C] resize-none" />
+                                <textarea
+                                    rows={3} placeholder="Tell us about your investment goals..."
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[#325074] font-medium focus:outline-none focus:ring-2 focus:ring-[#FEC12C] resize-none"
+                                    value={formData.message}
+                                    onChange={e => setFormData({ ...formData, message: e.target.value })}
+                                />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full flex items-center justify-center gap-2 bg-[#FEC12C] text-[#325074] py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 transition-all"
+                                disabled={isSubmitting}
+                                className="w-full flex items-center justify-center gap-2 bg-[#FEC12C] text-[#325074] py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                <Send size={16} /> Submit Inquiry
+                                {isSubmitting ? <span className="animate-pulse">Sending...</span> : <><Send size={16} /> Submit Inquiry</>}
                             </button>
 
                             <p className="text-[10px] text-slate-400 text-center">

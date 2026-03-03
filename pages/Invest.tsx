@@ -294,8 +294,14 @@ const Invest: React.FC = () => {
                                 <div className="pt-4 border-t border-slate-100 space-y-3">
                                     <div className="flex justify-between items-end">
                                         <div>
-                                            <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest">Starting From</p>
-                                            <p className="text-lg font-black text-[#325074]">{project.priceStart}</p>
+                                            <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Starting From</p>
+                                            <p className="text-lg font-black text-[#325074]">
+                                                {project.priceStart.includes('Contact') ? (
+                                                    <Link to="/contact" className="hover:text-[#FEC12C] transition-colors underline decoration-dotted underline-offset-4">
+                                                        {project.priceStart}
+                                                    </Link>
+                                                ) : project.priceStart}
+                                            </p>
                                         </div>
                                         {project.expectedYield && (
                                             <div className="flex items-center gap-1 text-emerald-500">

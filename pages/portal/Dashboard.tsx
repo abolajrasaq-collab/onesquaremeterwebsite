@@ -2,7 +2,7 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { mockInvestments, mockTransactions, mockWalletBalance } from '../../data/mockPortfolio';
+import { useData } from '../../context/DataContext';
 import {
     TrendingUp,
     ArrowUpRight,
@@ -17,18 +17,28 @@ import SEO from '../../components/SEO';
 
 const Dashboard: React.FC = () => {
     const { user } = useAuth();
+    const { investments, transactions, walletBalance, isLoading } = useData();
 
-    const totalInvested = mockInvestments.reduce((sum, inv) => sum + inv.amountInvested, 0);
-    const totalCurrentValue = mockInvestments.reduce((sum, inv) => sum + inv.currentValue, 0);
-    const totalROI = ((totalCurrentValue - totalInvested) / totalInvested * 100).toFixed(1);
-    const activeInvestments = mockInvestments.filter(inv => inv.status === 'Active').length;
-    const recentTransactions = mockTransactions.slice(0, 5);
+    if (isLoading) {
+        return (
+            <div className="h-96 flex flex-col items-center justify-center space-y-4">
+                <div className="w-12 h-12 border-4 border-slate-200 border-t-[#FEC12C] rounded-full animate-spin" />
+                <p className="text-slate-400 font-medium animate-pulse">Loading portfolio...</p>
+            </div>
+        );
+    }
 
-    const portfolioAllocation = mockInvestments.map(inv => ({
+    const totalInvested = investments.reduce((sum, inv) => sum + inv.amountInvested, 0);
+    const totalCurrentValue = investments.reduce((sum, inv) => sum + inv.currentValue, 0);
+    const totalROI = totalInvested > 0 ? ((totalCurrentValue - totalInvested) / totalInvested * 100).toFixed(1) : '0.0';
+    const activeInvestments = investments.filter(inv => inv.status === 'Active').length;
+    const recentTransactions = transactions.slice(0, 5);
+
+    const portfolioAllocation = investments.map((inv, index) => ({
         name: inv.projectName,
         value: inv.currentValue,
-        percentage: ((inv.currentValue / totalCurrentValue) * 100).toFixed(0),
-        color: ['#325074', '#FEC12C', '#34d399'][mockInvestments.indexOf(inv)] || '#94a3b8',
+        percentage: totalCurrentValue > 0 ? ((inv.currentValue / totalCurrentValue) * 100).toFixed(0) : '0',
+        color: ['#325074', '#FEC12C', '#34d399'][index % 3] || '#94a3b8',
     }));
 
     return (
@@ -74,7 +84,7 @@ const Dashboard: React.FC = () => {
                     },
                     {
                         label: 'Wallet Balance',
-                        value: `₦${mockWalletBalance.toLocaleString()}`,
+                        value: `₦${walletBalance.toLocaleString()}`,
                         change: 'Available',
                         positive: true,
                         icon: <Wallet size={20} />,
@@ -188,7 +198,7 @@ const Dashboard: React.FC = () => {
                     </Link>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {mockInvestments.map((inv, i) => (
+                    {investments.map((inv, i) => (
                         <motion.div
                             key={inv.id}
                             initial={{ opacity: 0, y: 20 }}

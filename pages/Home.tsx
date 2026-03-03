@@ -486,11 +486,23 @@ const Home: React.FC = () => {
                                     <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                                         <div>
                                             <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Entry Point</p>
-                                            <p className="text-lg font-black text-[#325074]">{p.price}</p>
+                                            <p className="text-lg font-black text-[#325074]">
+                                                {p.price.includes('Contact') ? (
+                                                    <Link to="/contact" className="hover:text-[#FEC12C] transition-colors underline decoration-dotted underline-offset-4">
+                                                        {p.price}
+                                                    </Link>
+                                                ) : p.price}
+                                            </p>
                                         </div>
                                         <div>
                                             <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Target Yield</p>
-                                            <p className="text-lg font-black text-emerald-500">{p.yield}</p>
+                                            <p className="text-lg font-black text-emerald-500">
+                                                {p.yield.includes('Contact') ? (
+                                                    <Link to="/contact" className="hover:text-[#325074] transition-colors underline decoration-dotted underline-offset-4">
+                                                        {p.yield}
+                                                    </Link>
+                                                ) : p.yield}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
