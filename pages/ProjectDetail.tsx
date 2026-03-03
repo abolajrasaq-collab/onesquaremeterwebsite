@@ -9,8 +9,7 @@ import {
     ShieldCheck, Landmark, Zap, Wrench, GraduationCap, ShoppingBag, Heart, Bus, Building2, Ruler
 } from 'lucide-react';
 import { projects } from '../data/projects';
-import Project3DViewer from '../components/Project3DViewer';
-import SplatViewer from '../components/SplatViewer';
+import GlbViewer from '../components/GlbViewer';
 import { useData } from '../context/DataContext';
 
 const ProjectDetail: React.FC = () => {
@@ -25,7 +24,6 @@ const ProjectDetail: React.FC = () => {
     const [lightboxImg, setLightboxImg] = useState<string | null>(null);
     const [unitGalleryIdx, setUnitGalleryIdx] = useState(0);
     const [activeTab, setActiveTab] = useState('overview');
-    const [view3DMode, setView3DMode] = useState<'spline' | 'splat'>('spline');
 
     // Form State
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -199,27 +197,9 @@ const ProjectDetail: React.FC = () => {
                                         <h3 className="text-2xl font-bold text-[#325074]">Interactive 3D Walkthrough</h3>
                                         <p className="text-slate-500">Explore the architecture and layout of {project.title}.</p>
                                     </div>
-                                    <div className="flex bg-slate-100 p-1 rounded-lg">
-                                        <button
-                                            onClick={() => setView3DMode('spline')}
-                                            className={`px-4 py-2 rounded-md text-xs font-bold uppercase tracking-widest transition-all ${view3DMode === 'spline' ? 'bg-[#325074] text-white shadow-md' : 'text-slate-500 hover:text-[#325074]'}`}
-                                        >
-                                            Standard 3D
-                                        </button>
-                                        <button
-                                            onClick={() => setView3DMode('splat')}
-                                            className={`px-4 py-2 rounded-md text-xs font-bold uppercase tracking-widest transition-all ${view3DMode === 'splat' ? 'bg-[#FEC12C] text-[#325074] shadow-md' : 'text-slate-500 hover:text-[#325074]'}`}
-                                        >
-                                            Gaussian Splat (HQ)
-                                        </button>
-                                    </div>
                                 </div>
 
-                                {view3DMode === 'spline' ? (
-                                    <Project3DViewer />
-                                ) : (
-                                    <SplatViewer url="/sam3d-splat.ply" />
-                                )}
+                                <GlbViewer url={project.glbUrl || "/model.glb"} />
                             </motion.div>
                         )}
 
