@@ -16,7 +16,7 @@ const About: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6"
                     >
-                        The Architecture of <span className="text-[#FEC12C]">Possibility</span>
+                        Crafting Legacies, One <span className="text-[#FEC12C]">Square Meter</span> at a Time.
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ const About: React.FC = () => {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-white/80 font-light leading-relaxed"
                     >
-                        Redefining the semiotics of luxury and the ethics of delivery in the Nigerian real estate market.
+                        Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor.
                     </motion.p>
                 </div>
                 {/* Abstract Background Elements */}
@@ -53,16 +53,16 @@ const About: React.FC = () => {
                                 2022 - 2024
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-[#325074] mb-8 leading-tight">
-                                The Art of <br />Pressing <span className="text-[#FEC12C]">Pause</span>
+                                Real Estate <span className="text-[#FEC12C]">Reimagined</span>
                             </h2>
-                            <blockquote className="text-xl text-slate-600 italic border-l-4 border-[#FEC12C] pl-6 mb-8">
-                                “Imagine pausing a symphony mid-performance, not because the musicians faltered, but to let the audience hear the silence before the crescendo.”
-                            </blockquote>
                             <p className="text-slate-600 leading-relaxed mb-6">
-                                Post-2022, 1SQmeter by Dantata made a bold strategic move: we pressed pause on sales and slowed down construction. This was not a retreat, but a rebellion against inflation and compromised quality.
+                                Welcome to One Square Meter by Dantata. Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
+                            </p>
+                            <p className="text-slate-600 leading-relaxed mb-6">
+                                From elite enclaves to self-complete intentional communities, our projects blend avant-garde design with relentless ROI. Backed by industry trust and tested by economic storms, we thrive where others falter.
                             </p>
                             <p className="text-slate-600 leading-relaxed">
-                                Amidst post-COVID chaos and skyrocketing building costs, we refused to let market volatility dictate the quality of our homes. Today, with settlements reached and project assets audited to far exceed liabilities, we are back—stronger, more resilient, and ready to deliver.
+                                This is real estate reimagined: bold, resilient, and crafted to transcend generations.
                             </p>
                         </div>
                         <div className="relative">
@@ -83,24 +83,24 @@ const About: React.FC = () => {
             {/* Brand Philosophy */}
             <section className="py-24 px-6 lg:px-12 bg-white">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#325074] mb-12">The Semiotics of the "Square Meter"</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#325074] mb-12">Our Mission & Vision</h2>
                     <div className="grid md:grid-cols-2 gap-12 text-left">
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
                             <h3 className="text-xl font-bold text-[#325074] mb-4 flex items-center gap-3">
                                 <Building2 className="text-[#FEC12C]" />
-                                Radical Transparency
+                                Mission
                             </h3>
-                            <p className="text-slate-600">
-                                The choice of ONE SQUARE METER is a commitment to precision. It signals a shift from the macro-promises of "estates" to the micro-perfection of the "square meter". Every unit of space is accounted for and engineered to international standards.
+                            <p className="text-slate-600 font-light leading-relaxed">
+                                To redefine urban excellence through precision-engineered developments that empower the visionary investor. We curate uncompromising luxury, rooted in integrity and relentless ROI, to craft enduring legacies one square meter at a time.
                             </p>
                         </div>
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
                             <h3 className="text-xl font-bold text-[#325074] mb-4 flex items-center gap-3">
                                 <ShieldCheck className="text-[#FEC12C]" />
-                                The 1SQM Creed
+                                Vision
                             </h3>
-                            <p className="text-slate-600">
-                                "We exist to transform lives by building more than spaces—we build possibilities. Rooted in courage and guided by vision, we champion the bold dreamers... Where others see limits, we see potential."
+                            <p className="text-slate-600 font-light leading-relaxed">
+                                To be Africa’s most trusted architect of high-yield properties, setting the global gold standard for resilient design, transparent governance, and generational wealth creation.
                             </p>
                         </div>
                     </div>
@@ -132,44 +132,27 @@ const About: React.FC = () => {
                 </div>
             </section>
 
-            {/* Archetypes */}
+            {/* Expertise Section */}
             <section className="py-24 px-6 lg:px-12 bg-slate-50 border-t border-slate-200">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#325074] mb-4">Psychological Architecture</h2>
-                        <p className="text-slate-600 max-w-2xl mx-auto">We adopt a sophisticated dual-archetype framework to fulfill the emotional desire for security and transformation.</p>
+                        <h2 className="text-3xl md:text-4xl font-black text-[#325074] mb-4">Our Expertise</h2>
+                        <p className="text-slate-500 max-w-2xl mx-auto">Where Vision, Craftsmanship, and Governance Redefine Excellence.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#325074]/5 rounded-bl-[100px] -z-0 transition-all group-hover:scale-110" />
-                            <div className="relative z-10">
-                                <div className="w-12 h-12 bg-[#325074] text-white rounded-lg flex items-center justify-center mb-6">
-                                    <ShieldCheck />
-                                </div>
-                                <h3 className="text-2xl font-black text-[#325074] mb-2">The Hero</h3>
-                                <p className="text-[#FEC12C] font-bold text-sm tracking-widest uppercase mb-4">Protector of Value</p>
-                                <ul className="text-slate-600 space-y-2">
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#325074] rounded-full" />Addresses the "trust deficit"</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#325074] rounded-full" />Reliable, Confident, Resilient</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#325074] rounded-full" />Slays the dragons of shady deals</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FEC12C]/10 rounded-bl-[100px] -z-0 transition-all group-hover:scale-110" />
-                            <div className="relative z-10">
-                                <div className="w-12 h-12 bg-[#FEC12C] text-[#325074] rounded-lg flex items-center justify-center mb-6">
-                                    <Heart />
-                                </div>
-                                <h3 className="text-2xl font-black text-[#325074] mb-2">The Magician</h3>
-                                <p className="text-[#FEC12C] font-bold text-sm tracking-widest uppercase mb-4">Visionary of Transformation</p>
-                                <ul className="text-slate-600 space-y-2">
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#FEC12C] rounded-full" />Turns vision into structures</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#FEC12C] rounded-full" />Charming and Visionary</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#FEC12C] rounded-full" />Provides innovation & elegance</li>
-                                </ul>
+                    <div className="bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FEC12C]/5 rounded-bl-[200px] -z-0" />
+                        <div className="relative z-10 space-y-8">
+                            <p className="text-xl text-slate-600 leading-relaxed font-light">
+                                At One Square Meter by Dantata, we merge visionary conceptualization, rooted in data-driven foresight and avant-garde design, with masterful craftsmanship to transform Abuja’s urban potential into enduring legacies.
+                            </p>
+                            <p className="text-xl text-slate-600 leading-relaxed font-light">
+                                Our elite consortium of architects and skilled workers delivers precision in every detail, from luxury enclaves to self-complete intentional communities. Powering this is our robust governance—a framework of fiscal discipline and operational transparency that de-risks investments and ensures that every square meter is built with resilient integrity.
+                            </p>
+                            <div className="pt-6 border-t border-slate-100">
+                                <p className="text-2xl font-black text-[#325074]">
+                                    With One Square Meter by Dantata, excellence isn't just a promise; it's a <span className="text-[#FEC12C]">legacy well-delivered</span>.
+                                </p>
                             </div>
                         </div>
                     </div>

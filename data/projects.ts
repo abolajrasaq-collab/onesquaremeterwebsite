@@ -50,7 +50,7 @@ export const projects: Record<string, ProjectData> = {
         title: 'The MetroView',
         category: 'Premium Residential',
         location: 'Institution & Research District, Jabi, Abuja',
-        description: 'Situated within the Institution and Research Zone of Jabi District, MetroView Estate offers proximity to premier institutions like Nile and Baze Universities. A masterpiece of modern architecture tailored for the discerning investor. The estate features contemporary designs with clean lines, floor-to-ceiling windows, and premium imported finishes throughout. Each home is thoughtfully planned to maximize natural light and cross-ventilation, with landscaped gardens and dedicated green spaces creating a serene living environment in the heart of Abuja.',
+        description: 'Modern 1 & 2 bedroom apartments in the heart of the city, engineered for the visionary professional. Features include smart home integration, 24/7 power, and high-yield rental potential.',
         priceStart: 'N50 Million',
         features: ['Ample Parking Spaces', 'Children\'s Play Area', 'Dedicated 24/7 Security', 'Close to Top Schools', 'Flexible Payment Plans', 'Landscaped Gardens', 'Perimeter Fencing & CCTV', 'Underground Drainage System', 'Street Lighting', 'Community Lounge', 'Eco-Friendly Design', 'Fire Safety Systems'],
         specs: [
@@ -193,7 +193,7 @@ export const projects: Record<string, ProjectData> = {
         title: 'Dantata Vistas',
         category: 'Self-Complete Housing Units',
         location: 'Multiple Locations (Jabi, Gwarinpa, Kabusa)',
-        description: '1SQmeters by Dantata Vistas offers a curated mix of detached, terraced, and apartment homes across Abuja’s prime locations. Delivered as cost-effective structures for owner customization, they ensure affordability, swift possession, and investment appeal.',
+        description: 'An elite enclave of luxury 4-bedroom terrace duplexes, blending avant-garde design with uncompromising structural integrity. Crafted for those who settle for nothing less than excellence.',
         priceStart: 'Contact for Pricing',
         features: ['Cost-Effective', 'Faster Possession', 'Customization Options', 'Prime Locations'],
         specs: [
@@ -211,7 +211,7 @@ export const projects: Record<string, ProjectData> = {
         title: 'Dantata Hostels',
         category: 'Student Co-Living',
         location: 'Institution & Research Zone, Jabi',
-        description: 'Invest in premium student accommodation serving Nile, Baze, and National Open Universities. A high-yield asset class with consistent demand and proven returns.',
+        description: 'Premium student housing designed to redefine the living-learning experience. Strategically located near major educational hubs, offering institutional-grade management and consistent ROI for co-owners.',
         priceStart: 'N300 Million',
         features: ['12% Yearly Rental Yield', '99.9% Occupancy', 'Minimal Maintenance', 'All En-suite Rooms'],
         specs: [

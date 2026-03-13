@@ -16,15 +16,15 @@ const Services: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6"
                     >
-                        Our <span className="text-[#FEC12C]">Services</span>
+                        Its all about Real <span className="text-[#FEC12C]">Estate</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-white/80 font-light leading-relaxed"
+                        className="text-2xl text-[#FEC12C] font-bold tracking-widest uppercase"
                     >
-                        Comprehensive real estate solutions designed for wealth creation and legacy building.
+                        Real Estate Well Delivered
                     </motion.p>
                 </div>
                 {/* Abstract Background Elements */}
@@ -54,7 +54,7 @@ const Services: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Property Development</h3>
                         <p className="text-slate-600 mb-6">
-                            From conceptualization to construction, we deliver premium residential and commercial projects that redefine the skyline. Our focus is on "One Square Meter" perfection.
+                            Crafting premium residential enclaves and commercial hubs with clinical precision and avant-garde design.
                         </p>
                         <ul className="text-sm text-slate-500 space-y-2">
                             <li className="flex items-center gap-2"><Key size={14} className="text-[#FEC12C]" /> Luxury Residential Estates</li>
@@ -70,7 +70,7 @@ const Services: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Investment Advisory</h3>
                         <p className="text-slate-600 mb-6">
-                            We guide clients through the complexities of the real estate market, identifying high-yield opportunities like our Student Hostels and self-complete housing units.
+                            Data-driven insights and strategic modeling to maximize ROI and de-risk your real estate portfolio.
                         </p>
                         <ul className="text-sm text-slate-500 space-y-2">
                             <li className="flex items-center gap-2"><Key size={14} className="text-[#FEC12C]" /> Portfolio Management</li>
@@ -86,7 +86,7 @@ const Services: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Facility Management</h3>
                         <p className="text-slate-600 mb-6">
-                            Our commitment doesn't end at handover. We provide best-in-class post-sale management to ensure your asset retains its value and functionality over time.
+                            Maintaining the integrity and value of your assets through professional, transparent, and efficient management.
                         </p>
                         <ul className="text-sm text-slate-500 space-y-2">
                             <li className="flex items-center gap-2"><Key size={14} className="text-[#FEC12C]" /> Maintenance & Repairs</li>
@@ -102,7 +102,7 @@ const Services: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Project Management</h3>
                         <p className="text-slate-600 mb-6">
-                            Detailed oversight of construction projects to ensure they are delivered on time, within budget, and to the highest quality standards.
+                            End-to-end delivery of complex projects, ensuring structural excellence and fiscal discipline.
                         </p>
                     </div>
 
@@ -113,7 +113,7 @@ const Services: React.FC = () => {
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Joint Ventures</h3>
                         <p className="text-slate-600 mb-6">
-                            Partnering with landowners and investors to unlock the potential of prime real estate assets through mutually beneficial agreements.
+                            Strategic partnerships that leverage institutional strength to unlock the full potential of large-scale urban development.
                         </p>
                     </div>
 

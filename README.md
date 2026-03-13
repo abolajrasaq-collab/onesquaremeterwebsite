@@ -14,7 +14,7 @@ The Nigerian real estate landscape in 2026 is defined by a paradox of immense op
 ### ⏸️ The Art of Pressing Pause (2022 - 2024)
 *“Imagine pausing a symphony mid-performance, not because the musicians faltered, but to let the audience hear the silence before the crescendo.”*
 
-Post-2022, 1SQmeter by Dantata made a bold strategic move: we pressed pause on sales and slowed down construction. This was not a retreat, but a rebellion against inflation and compromised quality.
+Post-2022, One Square Meter by Dantata made a bold strategic move: we pressed pause on sales and slowed down construction. This was not a retreat, but a rebellion against inflation and compromised quality.
 
 *   **The Why:** Amidst post-COVID chaos, election drama, and skyrocketing building costs, we refused to let market volatility dictate the quality of our homes. While competitors sold out inventories at fixed prices only to abandon projects later, we held unsold units close.
 *   **The Result:** Our buildings outlived the lies. Investigations and audits found project assets far exceeding liabilities. We absorbed inflationary blows so our subscribers wouldn't have to.

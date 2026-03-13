@@ -18,8 +18,8 @@ const faqData: FAQItem[] = [
     // Getting Started
     {
         category: 'Getting Started',
-        question: 'What is 1SQM and how does it work?',
-        answer: '1SQM (One Square Meter) is a real estate investment platform by Dantata & Sawoe. We make premium property investment accessible by allowing you to invest in professionally managed real estate projects. You choose a project, select a unit, and invest — either outright or through flexible payment plans. Your investment earns rental income and appreciates in value over time.',
+        question: 'What is One Square Meter and how does it work?',
+        answer: 'One Square Meter (1SQM) is a real estate investment platform by Dantata & Sawoe. We make premium property investment accessible by allowing you to invest in professionally managed real estate projects. You choose a project, select a unit, and invest — either outright or through flexible payment plans. Your investment earns rental income and appreciates in value over time.',
     },
     {
         category: 'Getting Started',
@@ -50,13 +50,13 @@ const faqData: FAQItem[] = [
     {
         category: 'Investment',
         question: 'When do I start earning rental income?',
-        answer: 'Rental income begins once the property is completed, tenanted, and operational. For already-built properties, yields start from the first full month of occupancy. For projects under construction, income begins once the development is completed and handed over. Yields are distributed quarterly into your 1SQM wallet.',
+        answer: 'Rental income begins once the property is completed, tenanted, and operational. For already-built properties, yields start from the first full month of occupancy. For projects under construction, income begins once the development is completed and handed over. Yields are distributed quarterly into your One Square Meter wallet.',
     },
     // Security
     {
         category: 'Security',
         question: 'Is my investment legally protected?',
-        answer: '1SQM is a product of Dantata & Sawoe, one of Nigeria\'s most established real estate developers. All investments are backed by proper title documentation, registered with relevant land authorities, and comply with Nigerian property law. Each investor receives a Certificate of Ownership and legal documentation for their investment.',
+        answer: 'One Square Meter is a product of Dantata & Sawoe, one of Nigeria\'s most established real estate developers. All investments are backed by proper title documentation, registered with relevant land authorities, and comply with Nigerian property law. Each investor receives a Certificate of Ownership and legal documentation for their investment.',
     },
     {
         category: 'Security',
@@ -72,7 +72,7 @@ const faqData: FAQItem[] = [
     {
         category: 'Platform',
         question: 'How do I fund my wallet?',
-        answer: 'Your 1SQM wallet can be funded via bank transfer. Simply click "Fund Wallet" in the Wallet section of your portal. You\'ll receive a dedicated virtual account number for instant transfers. Funds are typically credited within 5 minutes of receipt.',
+        answer: 'Your One Square Meter wallet can be funded via bank transfer. Simply click "Fund Wallet" in the Wallet section of your portal. You\'ll receive a dedicated virtual account number for instant transfers. Funds are typically credited within 5 minutes of receipt.',
     },
     {
         category: 'Platform',
@@ -108,7 +108,7 @@ const FAQ: React.FC = () => {
 
     return (
         <div className="bg-slate-50 min-h-screen">
-            <SEO title="FAQ — 1SQM Real Estate Investment" description="Frequently asked questions about investing with 1SQM, payment plans, returns, and security." />
+            <SEO title="FAQ — One Square Meter Real Estate Investment" description="Frequently asked questions about investing with One Square Meter, payment plans, returns, and security." />
 
             {/* Hero */}
             <section className="bg-[#325074] py-24 px-6 lg:px-12 relative overflow-hidden">
@@ -120,7 +120,7 @@ const FAQ: React.FC = () => {
                             How Can We <span className="text-[#FEC12C]">Help?</span>
                         </h1>
                         <p className="text-white/60 text-lg max-w-2xl mx-auto">
-                            Everything you need to know about investing with 1SQM. Can't find your answer? <Link to="/contact" className="text-[#FEC12C] underline">Contact us</Link>.
+                            Everything you need to know about investing with One Square Meter. Can't find your answer? <Link to="/contact" className="text-[#FEC12C] underline">Contact us</Link>.
                         </p>
                     </motion.div>
                 </div>

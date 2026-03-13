@@ -104,9 +104,9 @@ const Home: React.FC = () => {
                             transition={{ delay: 0.7, duration: 0.8 }}
                             className="text-7xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter"
                         >
-                            BEYOND<br />
-                            <span className="text-[#FEC12C]">BRICKS</span> &<br />
-                            MORTAR.
+                            CRAFTING<br />
+                            <span className="text-[#FEC12C]">LEGACIES</span><br />
+                            IN SQM.
                         </motion.h1>
 
                         <motion.p
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                             transition={{ delay: 0.9, duration: 0.8 }}
                             className="text-xl text-white/70 font-light max-w-xl leading-relaxed"
                         >
-                            ONE SQUARE METER is more than real estate. It's a movement of architectural precision, legacy co-ownership, and ethical wealth creation powered by 50 years of engineering excellence.
+                            Welcome to One Square Meter by Dantata. Crafting Legacies, One Square Meter at a Time. Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
                         </motion.p>
 
                         <motion.div
@@ -190,11 +190,16 @@ const Home: React.FC = () => {
 
                             <div className="space-y-6 text-xl text-slate-500 font-light leading-relaxed">
                                 <p>
-                                    For over five decades, the Dantata & Sawoe name has been synonymous with the very foundation of Nigeria's infrastructure.
-                                    <strong> ONE SQUARE METER</strong> brings that institutional strength to private property ownership.
+                                    Welcome to One Square Meter by Dantata. Crafting Legacies, One Square Meter at a Time.
                                 </p>
                                 <p>
-                                    We don't just sell property; we engineer prosperity. Each square meter is a curated asset, audited for structural integrity and future-proofed for capital growth.
+                                    Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
+                                </p>
+                                <p>
+                                    From elite enclaves to self-complete intentional communities, our projects blend avant-garde design with relentless ROI. Backed by industry trust and tested by economic storms, we thrive where others falter.
+                                </p>
+                                <p>
+                                    This is real estate reimagined: bold, resilient, and crafted to transcend generations.
                                 </p>
                             </div>
 
