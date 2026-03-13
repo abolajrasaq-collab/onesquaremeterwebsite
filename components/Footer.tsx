@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import BrandLogo from './BrandLogo';
 
 
 const Footer: React.FC = () => {
@@ -9,11 +10,9 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                     {/* Left: Brand Identity */}
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-[#FEC12C] text-[#325074] font-black flex items-center justify-center rounded-sm text-xl font-['Plus_Jakarta_Sans'] shadow-lg">1</div>
-                            <span className="text-white font-black text-2xl tracking-widest font-['Plus_Jakarta_Sans']">1SQM</span>
-                        </div>
-                        <p className="text-white/60 text-[10px] font-medium tracking-wider uppercase">One Square Meter by Dantata</p>
+                        <Link to="/" className="hover:scale-105 transition-transform mb-2">
+                            <BrandLogo variant="light" size="sm" layout="horizontal" />
+                        </Link>
                     </div>
 
                     {/* Right: Brand Positioning */}

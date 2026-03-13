@@ -124,7 +124,7 @@ export const projects: Record<string, ProjectData> = {
         ],
         status: 'Selling',
         imageHeight: 'h-[500px]',
-        heroImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=2000',
+        heroImage: '/images/properties/our-metroview-image.jpg',
         gallery: [
             'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
             'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800',
@@ -247,7 +247,7 @@ export const projects: Record<string, ProjectData> = {
         ],
         status: 'Selling',
         imageHeight: 'h-[450px]',
-        heroImage: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=2000',
+        heroImage: '/images/properties/your-hostels-image.jpg',
         gallery: [
             'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&q=80&w=800',
             'https://images.unsplash.com/photo-1522771753035-485053ded613?auto=format&fit=crop&q=80&w=800',
@@ -311,7 +311,7 @@ export const projects: Record<string, ProjectData> = {
         ],
         status: 'Selling',
         imageHeight: 'h-[400px]',
-        heroImage: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000',
+        heroImage: '/images/properties/your-copacabana-image.jpg',
         gallery: [
             'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800',
             'https://images.unsplash.com/photo-1600210491892-03d54cc0c578?auto=format&fit=crop&q=80&w=800',

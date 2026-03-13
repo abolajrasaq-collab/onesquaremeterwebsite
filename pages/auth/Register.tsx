@@ -116,7 +116,7 @@ const Register: React.FC = () => {
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FEC12C]/20 rounded-full blur-[150px]"></div>
 
                 <div className="relative z-10">
-                    <BrandLogo variant="dark" size="md" layout="full" />
+                    <BrandLogo variant="dark" size="md" layout="horizontal" />
                 </div>
 
                 <div className="relative z-10 space-y-8">
@@ -150,7 +150,7 @@ const Register: React.FC = () => {
                     className="w-full max-w-md space-y-10"
                 >
                     <div className="lg:hidden mb-8">
-                        <BrandLogo variant="light" size="md" layout="full" />
+                        <BrandLogo variant="light" size="md" layout="horizontal" />
                     </div>
 
                     <div className="space-y-3">

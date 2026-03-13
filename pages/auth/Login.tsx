@@ -67,7 +67,7 @@ const Login: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FEC12C]/10 rounded-full blur-[100px]"></div>
 
                 <div className="relative z-10">
-                    <BrandLogo variant="dark" size="md" layout="full" />
+                    <BrandLogo variant="dark" size="md" layout="horizontal" />
                 </div>
 
                 <div className="relative z-10 space-y-8">
@@ -105,7 +105,7 @@ const Login: React.FC = () => {
                 >
                     {/* Mobile Logo */}
                     <div className="lg:hidden mb-8">
-                        <BrandLogo variant="light" size="md" layout="full" />
+                        <BrandLogo variant="light" size="md" layout="horizontal" />
                     </div>
 
                     <div className="space-y-3">

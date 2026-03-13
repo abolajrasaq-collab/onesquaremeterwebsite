@@ -39,7 +39,7 @@ const PortalLayout: React.FC = () => {
             <aside className="hidden lg:flex flex-col w-72 bg-[#325074] text-white fixed inset-y-0 left-0 z-50">
                 {/* Logo */}
                 <div className="p-8 border-b border-white/10">
-                    <BrandLogo variant="dark" size="sm" layout="full" />
+                    <BrandLogo variant="dark" size="sm" layout="horizontal" />
                 </div>
 
                 {/* Navigation */}
@@ -87,7 +87,7 @@ const PortalLayout: React.FC = () => {
                     <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)}></div>
                     <div className="relative w-72 bg-[#325074] text-white flex flex-col">
                         <div className="p-6 flex justify-between items-center border-b border-white/10">
-                            <BrandLogo variant="dark" size="sm" layout="full" />
+                            <BrandLogo variant="dark" size="sm" layout="horizontal" />
                             <button onClick={() => setSidebarOpen(false)} className="text-white/60 hover:text-white">
                                 <X size={24} />
                             </button>
