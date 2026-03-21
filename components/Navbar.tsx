@@ -31,15 +31,12 @@ const Navbar: React.FC = () => {
         { label: 'Services', path: '/services' },
         {
             label: 'Projects',
-            path: '#',
+            path: '/projects',
             dropdown: [
                 { label: 'The MetroView', path: '/projects/metro-view' },
-                { label: 'Copa Cabana II', path: '/projects/copa-cabana-ii' },
                 { label: 'Dantata Vistas', path: '/projects/dantata-vistas' },
                 { label: 'Dantata Hostels', path: '/projects/dantata-hostels' },
-                { label: 'Dantata Allure', path: '/projects/dantata-allure' },
-                { label: 'Polo Vistas', path: '/projects/polo-vistas' },
-                { label: 'Vintage', path: '/projects/vintage' },
+                { label: 'Dantata Arcade', path: '/projects/dantata-arcade' },
             ]
         },
         { label: 'Downloads', path: '/downloads' },
@@ -50,7 +47,7 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-6 lg:px-12 py-6 ${scrolled ? 'bg-white shadow-xl translate-y-0' : 'bg-transparent translate-y-0'}`}>
+            <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-6 lg:px-12 py-6 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-xl translate-y-0' : 'bg-transparent translate-y-0'}`}>
                 <div className="max-w-screen-2xl mx-auto flex justify-between items-center">
                     <Link to="/" className="hover:scale-105 transition-transform z-50 relative">
                         <BrandLogo variant={scrolled || isMenuOpen ? 'dark' : 'light'} size="sm" layout="horizontal" />

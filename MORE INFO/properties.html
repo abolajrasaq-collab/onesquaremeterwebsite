@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>1SQM Property Portfolio | By Dantata</title>
+<script src="https://cdn.tailwindcss.com/"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+  * { font-family: 'Montserrat', sans-serif; }
+  .gold { color: #FEC12C; }
+  .navy { color: #325074; }
+  .bg-navy { background-color: #325074; }
+  .bg-gold { background-color: #FEC12C; }
+  .border-gold { border-color: #FEC12C; }
+  .tab-btn.active { background-color: #FEC12C; color: #325074; }
+  .tab-btn { transition: all 0.2s; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .unit-tab.active { background-color: #325074; color: white; }
+  .gallery-img { cursor: pointer; transition: transform 0.2s; }
+  .gallery-img:hover { transform: scale(1.02); }
+  /* Lightbox */
+  #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:9999; align-items:center; justify-content:center; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
+  .stat-card { border-left: 4px solid #FEC12C; }
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- ═══════════════════════════════════════════════════ NAVBAR -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#325074] shadow-lg px-6 lg:px-12 py-4">
+  <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+    <div class="flex flex-col items-start">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-[#FEC12C] rounded-sm flex items-center justify-center font-black text-[#325074] text-sm">1</div>
+        <div class="flex flex-col font-bold text-white uppercase leading-tight text-sm tracking-wider">
+          <span>ONE SQUARE</span><span>METER</span>
+        </div>
+      </div>
+      <span class="text-[#FEC12C] text-[9px] uppercase tracking-[0.4em] mt-0.5 font-medium">BY DANTATA</span>
+    </div>
+    <div class="hidden lg:flex items-center gap-6 text-white text-xs uppercase tracking-widest font-semibold">
+      <a href="#hostels" class="hover:text-[#FEC12C] transition-colors">Hostels</a>
+      <a href="#vistas" class="hover:text-[#FEC12C] transition-colors">Vistas</a>
+      <a href="#arcade" class="hover:text-[#FEC12C] transition-colors">Arcade</a>
+      <a href="#pricing" class="hover:text-[#FEC12C] transition-colors">Pricing</a>
+      <a href="tel:09020020077" class="bg-[#FEC12C] text-[#325074] px-4 py-2 rounded font-bold hover:bg-yellow-300 transition-colors">0902 002 0077</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ HERO -->
+<section class="relative bg-[#325074] pt-32 pb-24 px-6 lg:px-12 overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image:repeating-linear-gradient(45deg,#FEC12C 0,#FEC12C 1px,transparent 0,transparent 50%);background-size:30px 30px;"></div>
+  <div class="relative max-w-screen-xl mx-auto">
+    <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-4">One Square Meter · Property Portfolio</p>
+    <h1 class="text-white font-black text-5xl lg:text-7xl uppercase leading-none mb-6">
+      THE<br/><span class="text-[#FEC12C]">COMPLETE</span><br/>PORTFOLIO.
+    </h1>
+    <p class="text-white/70 text-lg max-w-2xl mb-10 leading-relaxed">All properties, unit types, floor plans, pricing, and application forms — organised in one place. Explore Dantata Hostels, Dantata Vistas, and Dantata Arcade.</p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#hostels" class="bg-[#FEC12C] text-[#325074] font-bold uppercase tracking-wider px-8 py-4 text-sm hover:bg-yellow-300 transition-colors">Dantata Hostels →</a>
+      <a href="#vistas" class="border border-white/40 text-white font-bold uppercase tracking-wider px-8 py-4 text-sm hover:border-[#FEC12C] hover:text-[#FEC12C] transition-colors">Dantata Vistas →</a>
+      <a href="#arcade" class="border border-white/40 text-white font-bold uppercase tracking-wider px-8 py-4 text-sm hover:border-[#FEC12C] hover:text-[#FEC12C] transition-colors">Dantata Arcade →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ QUICK STATS -->
+<section class="bg-white py-10 px-6 lg:px-12 border-b border-gray-100">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="stat-card pl-4 py-2">
+      <div class="text-2xl font-black text-[#325074]">3</div>
+      <div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Property Lines</div>
+    </div>
+    <div class="stat-card pl-4 py-2">
+      <div class="text-2xl font-black text-[#325074]">6</div>
+      <div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Abuja Locations</div>
+    </div>
+    <div class="stat-card pl-4 py-2">
+      <div class="text-2xl font-black text-[#325074]">35%+</div>
+      <div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Annual Capital Growth</div>
+    </div>
+    <div class="stat-card pl-4 py-2">
+      <div class="text-2xl font-black text-[#325074]">100%</div>
+      <div class="text-xs uppercase tracking-wider text-gray-500 mt-1">Target Occupancy</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ DANTATA HOSTELS -->
+<section id="hostels" class="py-24 px-6 lg:px-12 bg-slate-50">
+  <div class="max-w-screen-xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+      <div>
+        <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-3">Student Co-Living Investment</p>
+        <h2 class="text-[#325074] font-black text-4xl lg:text-5xl uppercase leading-none">DANTATA<br/>HOSTELS.</h2>
+        <div class="flex items-center gap-2 mt-4">
+          <svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-600 text-sm font-medium">Nile–Baze University Corridor, Jabi, Abuja · Plot 747</span>
+        </div>
+      </div>
+      <a href="747 Application Form.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-sm hover:bg-[#253d5a] transition-colors self-start lg:self-end">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download Application Form
+      </a>
+    </div>
+
+    <!-- Investment Pitch -->
+    <div class="bg-[#325074] rounded-lg p-8 mb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[#FEC12C]/10 rounded-full -translate-y-32 translate-x-32"></div>
+      <div class="relative grid lg:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-[#FEC12C] font-bold text-xl mb-4 uppercase tracking-wide">Why Dantata Hostels?</h3>
+          <p class="text-white/80 text-sm leading-relaxed mb-4">Located within a 20,000+ student university district — the most concentrated academic corridor in Abuja. The Nile–Baze University Corridor creates a powerful, recurring rental market driven by constant premium student demand.</p>
+          <p class="text-white/80 text-sm leading-relaxed">Every unit is delivered <strong class="text-white">fully furnished and rent-ready</strong>, with durable student beds, study desks, wardrobes, fitted kitchen cabinets, and living room furniture — enabling immediate rental from day one.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white/10 rounded-lg p-4"><div class="text-[#FEC12C] font-black text-2xl">12–15%</div><div class="text-white/70 text-xs mt-1 uppercase tracking-wide">Annual Rental Yield</div></div>
+          <div class="bg-white/10 rounded-lg p-4"><div class="text-[#FEC12C] font-black text-2xl">35%+</div><div class="text-white/70 text-xs mt-1 uppercase tracking-wide">Capital Appreciation</div></div>
+          <div class="bg-white/10 rounded-lg p-4"><div class="text-[#FEC12C] font-black text-2xl">99.9%</div><div class="text-white/70 text-xs mt-1 uppercase tracking-wide">Occupancy Rate</div></div>
+          <div class="bg-white/10 rounded-lg p-4"><div class="text-[#FEC12C] font-black text-2xl">20K+</div><div class="text-white/70 text-xs mt-1 uppercase tracking-wide">Student Population</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit Type Tabs -->
+    <div class="mb-6">
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button onclick="showHostelUnit('h4bed')" id="btn-h4bed" class="unit-tab active px-5 py-2 text-xs font-bold uppercase tracking-wider border border-[#325074] rounded transition-all">4 Bedroom Terrace</button>
+        <button onclick="showHostelUnit('h3bed')" id="btn-h3bed" class="unit-tab px-5 py-2 text-xs font-bold uppercase tracking-wider border border-[#325074] text-[#325074] rounded transition-all">3 Bedroom Terrace</button>
+        <button onclick="showHostelUnit('h2bed')" id="btn-h2bed" class="unit-tab px-5 py-2 text-xs font-bold uppercase tracking-wider border border-[#325074] text-[#325074] rounded transition-all">2 Bedroom Apt</button>
+        <button onclick="showHostelUnit('h1bed')" id="btn-h1bed" class="unit-tab px-5 py-2 text-xs font-bold uppercase tracking-wider border border-[#325074] text-[#325074] rounded transition-all">1 Bedroom Apt</button>
+      </div>
+
+      <!-- 4 BED -->
+      <div id="h4bed" class="hostel-unit">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 class="text-[#325074] font-black text-2xl uppercase mb-2">4 Bedroom Terrace Duplex</h3>
+            <p class="text-[#FEC12C] font-bold text-sm mb-4">8 Bedspaces · 4.5 Bathrooms · Fully Furnished</p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">Each fully furnished terrace accommodates 8 bedspaces across four bedrooms and 4.5 bathrooms, complemented by a spacious living area and modern kitchen.</p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Property Value</div><div class="font-black text-[#325074] text-lg">From ₦300M</div></div>
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Annual Rental Income</div><div class="font-black text-[#325074] text-lg">₦32M</div></div>
+            </div>
+            <div class="bg-[#FEC12C]/10 border border-[#FEC12C]/30 rounded p-4">
+              <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-2">Payment Bank Details</div>
+              <div class="text-sm text-gray-700">ONE SQUARE METER BY DANTATA LTD<br/><strong>Providus Bank · 1300778295</strong></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <img src="Dantata Hostels/4 bedroom Terrace Duplex/4 BEDROOM TERRACE DUPLEX.png" alt="4 Bed Terrace" class="gallery-img col-span-2 w-full h-52 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/4 bedroom Terrace Duplex/GROUND FLOR.png" alt="Ground Floor Plan" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/4 bedroom Terrace Duplex/FIRST FLOOR.png" alt="First Floor Plan" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/4 bedroom Terrace Duplex/INTERIOR SHOT.png" alt="Interior" class="gallery-img col-span-2 w-full h-40 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 BED -->
+      <div id="h3bed" class="hostel-unit hidden">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 class="text-[#325074] font-black text-2xl uppercase mb-2">3 Bedroom Terrace Duplex</h3>
+            <p class="text-[#FEC12C] font-bold text-sm mb-4">6 Bedspaces · 3.5 Bathrooms · Fully Furnished</p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">Each fully furnished terrace accommodates 6 bedspaces across three bedrooms and 3.5 bathrooms, complemented by a spacious living area and modern kitchen.</p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Property Value</div><div class="font-black text-[#325074] text-lg">From ₦225M</div></div>
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Annual Rental Income</div><div class="font-black text-[#325074] text-lg">₦24M</div></div>
+            </div>
+            <div class="bg-[#FEC12C]/10 border border-[#FEC12C]/30 rounded p-4">
+              <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-2">Payment Bank Details</div>
+              <div class="text-sm text-gray-700">ONE SQUARE METER BY DANTATA LTD<br/><strong>Providus Bank · 1300778295</strong></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <img src="Dantata Hostels/3 bedroom Terrace Duplex/3 Bedroom terrace duplex.png" alt="3 Bed Terrace" class="gallery-img col-span-2 w-full h-52 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/3 bedroom Terrace Duplex/GROUND FLOOR.png" alt="Ground Floor" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/3 bedroom Terrace Duplex/FIRST FLOOR.png" alt="First Floor" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/3 bedroom Terrace Duplex/INETRIOR.png" alt="Interior" class="gallery-img col-span-2 w-full h-40 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 BED -->
+      <div id="h2bed" class="hostel-unit hidden">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 class="text-[#325074] font-black text-2xl uppercase mb-2">2 Bedroom Apartment</h3>
+            <p class="text-[#FEC12C] font-bold text-sm mb-4">4 Bedspaces · 2.5 Bathrooms · Fully Furnished</p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">Each fully furnished apartment accommodates 4 bedspaces across two bedrooms and 2.5 bathrooms, complemented by a living area and modern kitchen.</p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Property Value</div><div class="font-black text-[#325074] text-lg">From ₦150M</div></div>
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Annual Rental Income</div><div class="font-black text-[#325074] text-lg">₦16M</div></div>
+            </div>
+            <div class="bg-[#FEC12C]/10 border border-[#FEC12C]/30 rounded p-4">
+              <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-2">Payment Bank Details</div>
+              <div class="text-sm text-gray-700">ONE SQUARE METER BY DANTATA LTD<br/><strong>Providus Bank · 1300778295</strong></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <img src="Dantata Hostels/2 Bedroom Apartment/2 Bedroom Apartment.png" alt="2 Bed Apartment" class="gallery-img col-span-2 w-full h-52 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/2 Bedroom Apartment/2 BED - PENT FLOOR BED A&B 1.png" alt="Bedroom" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+            <img src="Dantata Hostels/2 Bedroom Apartment/2 BED - PENT FLOOR KITCHEN.png" alt="Kitchen" class="gallery-img w-full h-32 object-cover rounded shadow" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1 BED -->
+      <div id="h1bed" class="hostel-unit hidden">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 class="text-[#325074] font-black text-2xl uppercase mb-2">1 Bedroom Apartment</h3>
+            <p class="text-[#FEC12C] font-bold text-sm mb-4">3 Bedspaces · 1.5 Bathrooms · Fully Furnished</p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">Each fully furnished apartment accommodates 3 bedspaces across one bedroom and 1.5 bathrooms, complemented by a living area and modern kitchen.</p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Property Value (Gold)</div><div class="font-black text-[#325074] text-lg">₦112.5M</div></div>
+              <div class="bg-slate-100 rounded p-4"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Property Value (Platinum)</div><div class="font-black text-[#325074] text-lg">₦115M</div></div>
+              <div class="bg-slate-100 rounded p-4 col-span-2"><div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Annual Rental Income</div><div class="font-black text-[#325074] text-lg">From ₦12M</div></div>
+            </div>
+            <div class="bg-[#FEC12C]/10 border border-[#FEC12C]/30 rounded p-4">
+              <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-2">Payment Bank Details</div>
+              <div class="text-sm text-gray-700">ONE SQUARE METER BY DANTATA LTD<br/><strong>Providus Bank · 1300778295</strong></div>
+            </div>
+          </div>
+          <div>
+            <img src="Dantata Hostels/1 Bedroom Apartment/1 Bedroom Apartment.png" alt="1 Bed Apartment" class="gallery-img w-full h-64 object-cover rounded-lg shadow" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hostel Amenities -->
+    <div class="mt-12 bg-white rounded-lg p-8 shadow-sm">
+      <h4 class="text-[#325074] font-bold uppercase tracking-wider text-sm mb-6">Development Amenities</h4>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Recreation Facilities</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Tech Innovation Hub</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Managed Infrastructure</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Professional Security</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Modern Power Solutions</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Fully Furnished Units</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">Rent-Ready from Day 1</span></div>
+        <div class="flex items-center gap-3"><div class="w-2 h-2 bg-[#FEC12C] rounded-full flex-shrink-0"></div><span class="text-sm text-gray-700">12-Month Payment Plan</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ DANTATA VISTAS -->
+<section id="vistas" class="py-24 px-6 lg:px-12 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="mb-12">
+      <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-3">Residential Development</p>
+      <h2 class="text-[#325074] font-black text-4xl lg:text-5xl uppercase leading-none mb-4">DANTATA<br/>VISTAS.</h2>
+      <p class="text-gray-600 max-w-2xl text-sm leading-relaxed">Four landmark residential projects across Abuja's most strategic locations — from Karsana to Jabi to Lokogoma. Each Vistas project offers premium units at multiple build stages.</p>
+    </div>
+
+    <!-- Location Tabs -->
+    <div class="flex flex-wrap gap-2 mb-8 border-b border-gray-200 pb-4">
+      <button onclick="showVistas('v002')" id="btn-v002" class="tab-btn active px-5 py-2 text-xs font-bold uppercase tracking-wider rounded bg-[#FEC12C] text-[#325074]">Vistas 002</button>
+      <button onclick="showVistas('v106')" id="btn-v106" class="tab-btn px-5 py-2 text-xs font-bold uppercase tracking-wider rounded bg-gray-100 text-gray-600 hover:bg-[#325074] hover:text-white">Vistas 106</button>
+      <button onclick="showVistas('v310')" id="btn-v310" class="tab-btn px-5 py-2 text-xs font-bold uppercase tracking-wider rounded bg-gray-100 text-gray-600 hover:bg-[#325074] hover:text-white">Vistas 310</button>
+      <button onclick="showVistas('v2151')" id="btn-v2151" class="tab-btn px-5 py-2 text-xs font-bold uppercase tracking-wider rounded bg-gray-100 text-gray-600 hover:bg-[#325074] hover:text-white">Vistas 2151</button>
+    </div>
+
+    <!-- VISTAS 002 -->
+    <div id="v002" class="vistas-panel">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-[#325074] font-black text-3xl uppercase">Vistas 002</h3>
+          <div class="flex items-center gap-2 mt-2"><svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-600 text-sm">EFAB Queens, Karsana</span></div>
+        </div>
+        <a href="Dantata Arcade/EFAB BIFOLD EXT.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-xs hover:bg-[#253d5a] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Brochure / Form
+        </a>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="bg-slate-50 rounded-lg p-6 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-sm mb-4">4 Bed Detached Duplex + BQ</div>
+          <img src="Dantata Vistas/Vistas 002/4Bedroom Detached Duplex/4 BED FOR JPEGS - 3D View - {3D}.jpg" alt="4 Bed Detached" class="gallery-img w-full h-44 object-cover rounded mb-3" onclick="openLight(this.src)"/>
+          <div class="grid grid-cols-2 gap-2 mt-3">
+            <img src="Dantata Vistas/Vistas 002/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 01 Ground Floor.jpg" alt="Ground Floor" class="gallery-img w-full h-24 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 002/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 02 First Floor.jpg" alt="First Floor" class="gallery-img w-full h-24 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">Price (Vistas 106 ref.)</div>
+            <div class="font-black text-[#325074] text-lg">₦220M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTAS 106 -->
+    <div id="v106" class="vistas-panel hidden">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-[#325074] font-black text-3xl uppercase">Vistas 106</h3>
+          <div class="flex items-center gap-2 mt-2"><svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-600 text-sm">Papal's Ground, Karsana North</span></div>
+        </div>
+        <a href="106 FORM.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-xs hover:bg-[#253d5a] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Application Form
+        </a>
+      </div>
+      <div class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <!-- 4 Bed Detached -->
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">4 Bed Detached Duplex + BQ</div>
+          <img src="Dantata Vistas/Vistas 106/4Bedroom Detached Duplex/A.RGB_color.jpg" alt="4 Bed Detached" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 106/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 106/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦220,000,000</div></div>
+        </div>
+        <!-- 4 Bed Terrace -->
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">4 Bed Terrace Duplex</div>
+          <img src="Dantata Vistas/Vistas 106/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - 3D View - {3D}.jpg" alt="4 Bed Terrace" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 106/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 106/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦165,000,000</div></div>
+        </div>
+        <!-- 3 Bed Apt -->
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">3 Bedroom Apartment</div>
+          <img src="Dantata Vistas/Vistas 106/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="3 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 106/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 106/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦101,000,000</div></div>
+        </div>
+        <!-- 2 Bed Apt -->
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">2 Bedroom Apartment</div>
+          <img src="Dantata Vistas/Vistas 106/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="2 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 106/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 106/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦77,000,000</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTAS 310 -->
+    <div id="v310" class="vistas-panel hidden">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-[#325074] font-black text-3xl uppercase">Vistas 310</h3>
+          <div class="flex items-center gap-2 mt-2"><svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-600 text-sm">Nile University Street, Jabi</span></div>
+        </div>
+        <a href="310 FORM.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-xs hover:bg-[#253d5a] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Application Form
+        </a>
+      </div>
+      <div class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">4 Bed Detached Duplex + BQ</div>
+          <img src="Dantata Vistas/Vistas 310/4Bedroom Detached Duplex/A.RGB_color.jpg" alt="4 Bed Detached" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 310/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 310/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦265,000,000</div></div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">4 Bed Terrace Duplex</div>
+          <img src="Dantata Vistas/Vistas 310/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - 3D View - {3D}.jpg" alt="4 Bed Terrace" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 310/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 310/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦178,000,000</div></div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">3 Bedroom Apartment</div>
+          <img src="Dantata Vistas/Vistas 310/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="3 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 310/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 310/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦115,000,000</div></div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-3">2 Bedroom Apartment</div>
+          <img src="Dantata Vistas/Vistas 310/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="2 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1 mb-3">
+            <img src="Dantata Vistas/Vistas 310/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 310/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-200 pt-3"><div class="text-xs text-gray-500">Price</div><div class="font-black text-[#325074]">₦83,000,000</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTAS 2151 -->
+    <div id="v2151" class="vistas-panel hidden">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-[#325074] font-black text-3xl uppercase">Vistas 2151</h3>
+          <div class="flex items-center gap-2 mt-2"><svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-600 text-sm">By Kabusa Gardens, Lokogoma</span></div>
+        </div>
+        <a href="2151 FORM.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-xs hover:bg-[#253d5a] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Application Form
+        </a>
+      </div>
+      <!-- Price note for 2151 -->
+      <div class="bg-[#FEC12C]/10 border border-[#FEC12C]/30 rounded-lg p-4 mb-6 flex items-center gap-3">
+        <svg class="w-5 h-5 text-[#FEC12C] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+        <p class="text-sm text-gray-700"><strong>DPC Stage available</strong> — 4 Bed Detached Duplex from <strong>₦65M (DPC)</strong>. Multiple build stages offered: DPC, Shell, Advanced Shell.</p>
+      </div>
+      <div class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-1">4 Bed Detached Duplex + BQ</div>
+          <div class="text-[#FEC12C] text-xs font-semibold mb-3">DPC: ₦65M · Shell: ₦210M</div>
+          <img src="Dantata Vistas/Vistas 2151/4Bedroom Detached Duplex/A.RGB_color.jpg" alt="4 Bed Detached" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1">
+            <img src="Dantata Vistas/Vistas 2151/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 2151/4Bedroom Detached Duplex/4 BED FOR JPEGS - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-1">4 Bed Terrace Duplex</div>
+          <div class="text-[#FEC12C] text-xs font-semibold mb-3">Shell: ₦145,000,000</div>
+          <img src="Dantata Vistas/Vistas 2151/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - 3D View - {3D}.jpg" alt="4 Bed Terrace" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1">
+            <img src="Dantata Vistas/Vistas 2151/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 2151/4 Bedroom Terrace Duplex/4Bedroom_Terrace_Okanje_21-11-2024 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-1">3 Bedroom Apartment</div>
+          <div class="text-[#FEC12C] text-xs font-semibold mb-3">Adv. Shell: ₦95,000,000</div>
+          <img src="Dantata Vistas/Vistas 2151/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="3 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1">
+            <img src="Dantata Vistas/Vistas 2151/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 2151/3 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-5 border border-gray-100">
+          <div class="text-[#325074] font-bold uppercase text-xs mb-1">2 Bedroom Apartment</div>
+          <div class="text-[#FEC12C] text-xs font-semibold mb-3">Adv. Shell: ₦72,000,000</div>
+          <img src="Dantata Vistas/Vistas 2151/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - 3D View - {3D}.jpg" alt="2 Bed" class="gallery-img w-full h-36 object-cover rounded mb-2" onclick="openLight(this.src)"/>
+          <div class="flex gap-1">
+            <img src="Dantata Vistas/Vistas 2151/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 01 Ground Floor.jpg" alt="GF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Vistas/Vistas 2151/2 Bedroom Apartment/2-3 BEDROOM APARTMENTS OKANJE 05-03-2025 - Floor Plan - 02 First Floor.jpg" alt="FF" class="gallery-img flex-1 h-16 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 bg-slate-50 rounded-lg p-5 border border-gray-100">
+        <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-2">Payment Bank Details (Vistas 2151)</div>
+        <div class="text-sm text-gray-700">ONE SQUARE METER · <strong>Zenith Bank · 1015923218</strong></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ DANTATA ARCADE -->
+<section id="arcade" class="py-24 px-6 lg:px-12 bg-slate-50">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+      <div>
+        <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-3">Commercial Real Estate</p>
+        <h2 class="text-[#325074] font-black text-4xl lg:text-5xl uppercase leading-none">DANTATA<br/>ARCADE.</h2>
+        <div class="flex items-center gap-2 mt-4"><svg class="w-4 h-4 text-[#FEC12C]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-600 text-sm">EFAB Queens Gate, Karsana, Abuja</span></div>
+      </div>
+      <a href="EFAB FORM.pdf" target="_blank" class="inline-flex items-center gap-2 bg-[#325074] text-white font-bold uppercase tracking-wider px-6 py-3 text-sm hover:bg-[#253d5a] transition-colors self-start lg:self-end">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download Application Form
+      </a>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 mb-12">
+      <!-- 50sqm Duplex -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+        <img src="Dantata Arcade/50sqm Duplex Shops/50sqm Duplex Shops.jpeg" alt="50sqm Duplex Shop" class="gallery-img w-full h-52 object-cover" onclick="openLight(this.src)"/>
+        <div class="p-6">
+          <div class="inline-block bg-[#FEC12C] text-[#325074] text-xs font-black px-3 py-1 uppercase tracking-wider rounded mb-3">Type B · 50 sqm</div>
+          <h3 class="text-[#325074] font-black text-xl uppercase mb-2">Duplex Shop</h3>
+          <p class="text-gray-600 text-sm mb-4">Two-storey commercial unit ideal for retail, office, or service businesses.</p>
+          <div class="grid grid-cols-2 gap-2 mb-4">
+            <img src="Dantata Arcade/50sqm Duplex Shops/GROUND FLOOR.png" alt="Ground Floor" class="gallery-img w-full h-24 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Arcade/50sqm Duplex Shops/FIRST FLOOR.png" alt="First Floor" class="gallery-img w-full h-24 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-100 pt-4">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">Advanced Shell Price</div>
+            <div class="font-black text-[#325074] text-2xl">₦100,000,000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 75sqm Triplex -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+        <img src="Dantata Arcade/75sqm Duplex Shops/75sqm Duplex Shops.jpeg" alt="75sqm Triplex Shop" class="gallery-img w-full h-52 object-cover" onclick="openLight(this.src)"/>
+        <div class="p-6">
+          <div class="inline-block bg-[#325074] text-white text-xs font-black px-3 py-1 uppercase tracking-wider rounded mb-3">Type A · 75 sqm</div>
+          <h3 class="text-[#325074] font-black text-xl uppercase mb-2">Triplex Shop</h3>
+          <p class="text-gray-600 text-sm mb-4">Three-storey commercial unit offering maximum floor space for high-volume operations.</p>
+          <div class="grid grid-cols-3 gap-2 mb-4">
+            <img src="Dantata Arcade/75sqm Duplex Shops/GROUND FLOOR.png" alt="Ground Floor" class="gallery-img w-full h-20 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Arcade/75sqm Duplex Shops/FIRST FLOOR.png" alt="First Floor" class="gallery-img w-full h-20 object-cover rounded" onclick="openLight(this.src)"/>
+            <img src="Dantata Arcade/75sqm Duplex Shops/SECOND FLOOR.png" alt="Second Floor" class="gallery-img w-full h-20 object-cover rounded" onclick="openLight(this.src)"/>
+          </div>
+          <div class="border-t border-gray-100 pt-4">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">Advanced Shell Price</div>
+            <div class="font-black text-[#325074] text-2xl">₦135,000,000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 300sqm Banking Hall -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+        <img src="Dantata Arcade/300sqm BankingHall_Supermarket/300sqm BankingHall_Supermarket.jpeg" alt="Banking Hall" class="gallery-img w-full h-52 object-cover" onclick="openLight(this.src)"/>
+        <div class="p-6">
+          <div class="inline-block bg-[#FEC12C] text-[#325074] text-xs font-black px-3 py-1 uppercase tracking-wider rounded mb-3">Type C/D · 125–300 sqm</div>
+          <h3 class="text-[#325074] font-black text-xl uppercase mb-2">Banking Hall / Supermarket</h3>
+          <p class="text-gray-600 text-sm mb-4">Large-format commercial space with lounge, suitable for anchor tenants — banks, supermarkets, or showrooms.</p>
+          <div class="border-t border-gray-100 pt-4 grid grid-cols-2 gap-3">
+            <div><div class="text-xs text-gray-500 uppercase tracking-wide">Type C (150sqm)</div><div class="font-black text-[#325074]">₦165,000,000</div></div>
+            <div><div class="text-xs text-gray-500 uppercase tracking-wide">Type D (125sqm)</div><div class="font-black text-[#325074]">₦117,500,000</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arcade Bank Details -->
+    <div class="bg-white rounded-lg p-6 border border-gray-100 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+      <div>
+        <div class="text-xs font-bold text-[#325074] uppercase tracking-wide mb-1">Payment Bank Details (Arcade)</div>
+        <div class="text-sm text-gray-700">ONE SQUARE METER · <strong>Providus Bank · 1300778295</strong></div>
+      </div>
+      <a href="tel:09020020077" class="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] font-bold uppercase tracking-wider px-6 py-3 text-sm hover:bg-yellow-300 transition-colors rounded">
+        Enquire Now: 0902 002 0077
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CONSOLIDATED PRICING -->
+<section id="pricing" class="py-24 px-6 lg:px-12 bg-[#325074]">
+  <div class="max-w-screen-xl mx-auto">
+    <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-3">Effective February 2026</p>
+    <h2 class="text-white font-black text-4xl lg:text-5xl uppercase leading-none mb-12">CONSOLIDATED<br/>PRICING.</h2>
+
+    <!-- Vistas Pricing Table -->
+    <div class="mb-10">
+      <h3 class="text-[#FEC12C] font-bold uppercase tracking-wider text-sm mb-4">Dantata Vistas</h3>
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full text-xs text-left">
+          <thead>
+            <tr class="bg-white/10 text-white uppercase tracking-wider">
+              <th class="px-4 py-3 font-bold">Project</th>
+              <th class="px-4 py-3 font-bold">4 Bed Detached</th>
+              <th class="px-4 py-3 font-bold">4 Bed Terrace</th>
+              <th class="px-4 py-3 font-bold">3 Bed Terrace</th>
+              <th class="px-4 py-3 font-bold">3 Bed Apt</th>
+              <th class="px-4 py-3 font-bold">2 Bed Apt</th>
+            </tr>
+          </thead>
+          <tbody class="text-white/80">
+            <tr class="border-t border-white/10 hover:bg-white/5">
+              <td class="px-4 py-3 font-bold text-[#FEC12C]">Vistas 2151<br/><span class="text-white/50 font-normal text-[10px]">Lokogoma</span></td>
+              <td class="px-4 py-3">DPC ₦65M<br/>Shell ₦210M</td>
+              <td class="px-4 py-3">Shell ₦145M</td>
+              <td class="px-4 py-3">Shell ₦115M</td>
+              <td class="px-4 py-3">Adv. Shell ₦95M</td>
+              <td class="px-4 py-3">Adv. Shell ₦72M</td>
+            </tr>
+            <tr class="border-t border-white/10 hover:bg-white/5">
+              <td class="px-4 py-3 font-bold text-[#FEC12C]">Vistas 106<br/><span class="text-white/50 font-normal text-[10px]">Karsana North</span></td>
+              <td class="px-4 py-3">₦220M</td>
+              <td class="px-4 py-3">₦165M</td>
+              <td class="px-4 py-3">—</td>
+              <td class="px-4 py-3">₦101M</td>
+              <td class="px-4 py-3">₦77M</td>
+            </tr>
+            <tr class="border-t border-white/10 hover:bg-white/5">
+              <td class="px-4 py-3 font-bold text-[#FEC12C]">Vistas 310<br/><span class="text-white/50 font-normal text-[10px]">Jabi</span></td>
+              <td class="px-4 py-3">₦265M</td>
+              <td class="px-4 py-3">₦178M</td>
+              <td class="px-4 py-3">—</td>
+              <td class="px-4 py-3">₦115M</td>
+              <td class="px-4 py-3">₦83M</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Hostels Pricing Table -->
+    <div class="mb-10">
+      <h3 class="text-[#FEC12C] font-bold uppercase tracking-wider text-sm mb-4">Dantata Hostels (Fully Furnished)</h3>
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full text-xs text-left">
+          <thead>
+            <tr class="bg-white/10 text-white uppercase tracking-wider">
+              <th class="px-4 py-3 font-bold">Project</th>
+              <th class="px-4 py-3 font-bold">4 Bed Terrace</th>
+              <th class="px-4 py-3 font-bold">3 Bed Terrace</th>
+              <th class="px-4 py-3 font-bold">2 Bed Apt</th>
+              <th class="px-4 py-3 font-bold">1 Bed Apt</th>
+              <th class="px-4 py-3 font-bold">Studio</th>
+            </tr>
+          </thead>
+          <tbody class="text-white/80">
+            <tr class="border-t border-white/10 hover:bg-white/5">
+              <td class="px-4 py-3 font-bold text-[#FEC12C]">Hostel 747<br/><span class="text-white/50 font-normal text-[10px]">Jabi</span></td>
+              <td class="px-4 py-3">₦300M</td>
+              <td class="px-4 py-3">₦225M</td>
+              <td class="px-4 py-3">₦150M</td>
+              <td class="px-4 py-3">₦112.5M</td>
+              <td class="px-4 py-3">₦50M</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Arcade Pricing Table -->
+    <div>
+      <h3 class="text-[#FEC12C] font-bold uppercase tracking-wider text-sm mb-4">Dantata Arcade (Advanced Shell)</h3>
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full text-xs text-left">
+          <thead>
+            <tr class="bg-white/10 text-white uppercase tracking-wider">
+              <th class="px-4 py-3 font-bold">Project</th>
+              <th class="px-4 py-3 font-bold">Type A — Triplex 75sqm</th>
+              <th class="px-4 py-3 font-bold">Type B — Duplex 50sqm</th>
+              <th class="px-4 py-3 font-bold">Type C — Triplex+Lounge 150sqm</th>
+              <th class="px-4 py-3 font-bold">Type D — Duplex+Lounge 125sqm</th>
+            </tr>
+          </thead>
+          <tbody class="text-white/80">
+            <tr class="border-t border-white/10 hover:bg-white/5">
+              <td class="px-4 py-3 font-bold text-[#FEC12C]">EFAB Arcade<br/><span class="text-white/50 font-normal text-[10px]">Karsana</span></td>
+              <td class="px-4 py-3">₦135M</td>
+              <td class="px-4 py-3">₦100M</td>
+              <td class="px-4 py-3">₦165M</td>
+              <td class="px-4 py-3">₦117.5M</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ FORMS & CONTACT -->
+<section class="py-24 px-6 lg:px-12 bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <p class="text-[#FEC12C] uppercase tracking-[0.4em] text-xs font-semibold mb-3">Ready to Invest?</p>
+    <h2 class="text-[#325074] font-black text-4xl lg:text-5xl uppercase leading-none mb-12">APPLICATION<br/>FORMS.</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <a href="747 Application Form.pdf" target="_blank" class="group bg-slate-50 hover:bg-[#325074] rounded-xl p-6 border border-gray-100 hover:border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div><div class="font-black text-[#325074] group-hover:text-white uppercase text-sm">Dantata Hostels</div><div class="text-gray-500 group-hover:text-white/60 text-xs mt-1">747 Student Co-Living · Jabi</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download Form →</div>
+      </a>
+      <a href="106 FORM.pdf" target="_blank" class="group bg-slate-50 hover:bg-[#325074] rounded-xl p-6 border border-gray-100 hover:border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div><div class="font-black text-[#325074] group-hover:text-white uppercase text-sm">Vistas 106</div><div class="text-gray-500 group-hover:text-white/60 text-xs mt-1">Papal's Ground, Karsana North</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download Form →</div>
+      </a>
+      <a href="310 FORM.pdf" target="_blank" class="group bg-slate-50 hover:bg-[#325074] rounded-xl p-6 border border-gray-100 hover:border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div><div class="font-black text-[#325074] group-hover:text-white uppercase text-sm">Vistas 310</div><div class="text-gray-500 group-hover:text-white/60 text-xs mt-1">Nile University Street, Jabi</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download Form →</div>
+      </a>
+      <a href="2151 FORM.pdf" target="_blank" class="group bg-slate-50 hover:bg-[#325074] rounded-xl p-6 border border-gray-100 hover:border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div><div class="font-black text-[#325074] group-hover:text-white uppercase text-sm">Vistas 2151</div><div class="text-gray-500 group-hover:text-white/60 text-xs mt-1">By Kabusa Gardens, Lokogoma</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download Form →</div>
+      </a>
+      <a href="EFAB FORM.pdf" target="_blank" class="group bg-slate-50 hover:bg-[#325074] rounded-xl p-6 border border-gray-100 hover:border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div><div class="font-black text-[#325074] group-hover:text-white uppercase text-sm">EFAB Arcade</div><div class="text-gray-500 group-hover:text-white/60 text-xs mt-1">EFAB Queens Gate, Karsana</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download Form →</div>
+      </a>
+      <a href="FEB 2026 SELLING PRICES COSOLIDATED.pdf" target="_blank" class="group bg-[#325074] rounded-xl p-6 border border-[#325074] transition-all flex flex-col gap-4">
+        <div class="w-10 h-10 bg-[#FEC12C] rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-[#325074]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+        <div><div class="font-black text-white uppercase text-sm">Full Price Sheet</div><div class="text-white/60 text-xs mt-1">All Properties · Feb 2026</div></div>
+        <div class="text-[#FEC12C] text-xs font-bold uppercase tracking-wider mt-auto">Download PDF →</div>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-[#325074] rounded-2xl p-10 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10" style="background-image:repeating-linear-gradient(45deg,#FEC12C 0,#FEC12C 1px,transparent 0,transparent 50%);background-size:30px 30px;"></div>
+      <div class="relative">
+        <div class="text-[#FEC12C] font-bold uppercase tracking-widest text-xs mb-4">Now Selling</div>
+        <h3 class="text-white font-black text-3xl lg:text-4xl uppercase mb-4">READY TO OWN<br/>YOUR FUTURE?</h3>
+        <p class="text-white/70 text-sm mb-8 max-w-lg mx-auto">Contact our sales team today to reserve your unit, discuss payment plans, and begin your investment journey.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="tel:09020020077" class="bg-[#FEC12C] text-[#325074] font-black uppercase tracking-wider px-8 py-4 text-sm hover:bg-yellow-300 transition-colors rounded">Call: 0902 002 0077</a>
+          <a href="https://1sqmbydantata.com" target="_blank" class="border border-white/40 text-white font-bold uppercase tracking-wider px-8 py-4 text-sm hover:border-[#FEC12C] hover:text-[#FEC12C] transition-colors rounded">Visit 1sqmbydantata.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-white/50 text-xs py-8 px-6 lg:px-12 text-center">
+  <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+    <span class="font-bold text-white uppercase tracking-widest text-sm">ONE SQUARE METER · BY DANTATA</span>
+    <span>Prices effective February 2026. All figures in Nigerian Naira (₦). Subject to change without notice.</span>
+    <span>Providus Bank: 1300778295 · Zenith Bank: 1015923218</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLight()">
+  <button onclick="closeLight()" class="absolute top-4 right-6 text-white text-3xl font-bold z-10">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<script>
+  // Hostel unit tabs
+  function showHostelUnit(id) {
+    document.querySelectorAll('.hostel-unit').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('[id^="btn-h"]').forEach(btn => {
+      btn.classList.remove('active','bg-[#325074]','text-white');
+      btn.classList.add('text-[#325074]');
+    });
+    document.getElementById(id).classList.remove('hidden');
+    const btn = document.getElementById('btn-' + id);
+    btn.classList.add('active','bg-[#325074]','text-white');
+    btn.classList.remove('text-[#325074]');
+  }
+
+  // Vistas location tabs
+  function showVistas(id) {
+    document.querySelectorAll('.vistas-panel').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('[id^="btn-v"]').forEach(btn => {
+      btn.classList.remove('active','bg-[#FEC12C]','text-[#325074]');
+      btn.classList.add('bg-gray-100','text-gray-600');
+    });
+    document.getElementById(id).classList.remove('hidden');
+    const btn = document.getElementById('btn-' + id);
+    btn.classList.add('active','bg-[#FEC12C]','text-[#325074]');
+    btn.classList.remove('bg-gray-100','text-gray-600');
+  }
+
+  // Lightbox
+  function openLight(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLight() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLight(); });
+</script>
+</body>
+</html>

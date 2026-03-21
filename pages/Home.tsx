@@ -40,29 +40,28 @@ const Home: React.FC = () => {
     const totalROI = Math.round(((projectedValue - investmentNaira + (annualRentalYield * simYears)) / investmentNaira) * 100);
 
     // Select featured projects
-    const featuredProjects = ['metro-view', 'dantata-hostels', 'copa-cabana-ii'];
+    const featuredProjects = ['metro-view', 'dantata-hostels', 'dantata-vistas'];
     const displayProjects = featuredProjects.map(id => {
         const p = projectsData[id];
-        // Extract specs for display
-        const getSpec = (label: string) => p.specs.find(s => s.label.includes(label))?.value || 'N/A';
+        if (!p) return null;
 
         return {
             id: p.id,
-            name: p.title,
+            name: p.title || p.name,
             location: p.location,
-            price: p.priceStart,
-            yield: p.specs.find(s => s.label.includes('Yield'))?.value || "Contact Us",
-            img: p.heroImage || "/images/placeholders/project.jpg",
-            tag: p.category,
-            beds: p.units[0]?.features[0] || "Varies", // First unit's first feature often has beds
-            baths: p.units[1]?.features[1] || "Varies",
-            sqm: "VARIES",
-            features: p.features.slice(0, 4),
-            completion: p.status === 'Selling' ? '2025/26' : 'TBA',
-            totalUnits: p.units.length > 0 ? "Limited" : "TBA",
+            price: p.minInvestment,
+            yield: p.annualYield || "Contact Us",
+            img: p.heroImage || p.mainImage || "/images/placeholders/project.jpg",
+            tag: p.category || "Premium",
+            beds: p.units[0]?.type || "Varies", 
+            baths: "En-suite",
+            sqm: p.units[0]?.sqm || "VARIES",
+            features: (p.features || []).slice(0, 4),
+            completion: p.status.includes('Selling') || p.status.includes('Ongoing') ? '2025/26' : 'TBA',
+            totalUnits: p.units.length > 0 ? `${p.units.length} Units` : "TBA",
             description: p.description
         };
-    });
+    }).filter(p => p !== null);
 
 
     return (
@@ -124,7 +123,7 @@ const Home: React.FC = () => {
                             transition={{ delay: 1.1, duration: 0.8 }}
                             className="flex flex-wrap gap-6 pt-8"
                         >
-                            <Link to="/projects/metro-view" className="group flex items-center gap-4 bg-[#FEC12C] text-[#325074] px-10 py-5 rounded-xl font-black uppercase tracking-widest text-xs shadow-2xl hover:bg-white transition-all">
+                            <Link to="/projects/metro-view" className="group flex items-center gap-4 bg-[#FEC12C] text-[#325074] px-10 py-5 rounded-xl font-black uppercase tracking-widest text-xs shadow-lg hover:bg-white transition-all">
                                 Explore Portfolio <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                             </Link>
                             <Link to="/about" className="flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all">
@@ -165,15 +164,15 @@ const Home: React.FC = () => {
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
                         <div className="lg:col-span-6 relative">
-                            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Heritage" />
+                            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Heritage" loading="lazy" />
                                 <div className="absolute inset-0 bg-[#325074]/20 hover:bg-transparent transition-all duration-700"></div>
                             </div>
                             <motion.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 whileInView={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.3, duration: 0.5 }}
-                                className="absolute -bottom-12 -right-12 w-64 h-64 bg-[#FEC12C] rounded-3xl p-10 flex flex-col justify-center shadow-2xl"
+                                className="absolute -bottom-12 -right-12 w-64 h-64 bg-[#FEC12C] rounded-2xl p-10 flex flex-col justify-center shadow-xl"
                             >
                                 <h4 className="text-5xl font-black text-[#325074] leading-none mb-2">1976</h4>
                                 <p className="text-[#325074] font-bold text-[10px] uppercase tracking-widest">Foundation of the Legacy</p>
@@ -239,28 +238,28 @@ const Home: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             {
-                                name: "Olutosin BOLAJI",
-                                title: "Chief Executive Officer",
+                                name: "Alhassan A. DANTATA",
+                                title: "Board Chairman, Non Executive Director",
+                                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
+                                bio: "Pioneer industrialist delivering clear focus on the development of bespoke real estate products."
+                            },
+                            {
+                                name: "Bolaji A. Oluwatosin",
+                                title: "Managing Director, CEO",
                                 image: "/images/board/olutosin-bolaji.jpg",
-                                bio: "Visionary leader driving innovation in fractional real estate ownership"
+                                bio: "Seasoned architect and investment strategist driving exceptional financial returns."
                             },
                             {
-                                name: "Eng. Ibrahim Dantata",
-                                title: "Executive Chairman",
+                                name: "Engr. Nasiru A. Dantata",
+                                title: "Non-Executive Director",
                                 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800",
-                                bio: "50+ years pioneering Nigeria's infrastructure landscape"
+                                bio: "Construction industry leader with decades of large-scale infrastructure experience."
                             },
                             {
-                                name: "Barr. Amina Sawoe",
-                                title: "Managing Director",
+                                name: "Bolanle Alabi-Sami",
+                                title: "Non-Executive Director",
                                 image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-                                bio: "Real estate law expert with international certifications"
-                            },
-                            {
-                                name: "Arch. Chidi Okonkwo",
-                                title: "Chief Design Officer",
-                                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800",
-                                bio: "Award-winning architect, RIBA Fellow, 30+ landmark projects"
+                                bio: "Certified General Accountant bringing deep financial discipline and operational risk management insight."
                             },
 
                         ].map((director, i) => (
@@ -272,11 +271,12 @@ const Home: React.FC = () => {
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
                                 className="group"
                             >
-                                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-6 shadow-2xl">
+                                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6 shadow-lg border border-slate-100">
                                     <img
                                         src={director.image}
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                                         alt={director.name}
+                                        loading="lazy"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#325074] via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
 
@@ -302,7 +302,7 @@ const Home: React.FC = () => {
                         transition={{ duration: 0.8 }}
                         className="mt-24 max-w-4xl mx-auto text-center"
                     >
-                        <div className="bg-white p-12 rounded-[3rem] shadow-xl border border-slate-100">
+                        <div className="bg-white p-12 rounded-2xl shadow-lg border border-slate-100">
                             <Quote className="w-12 h-12 text-[#FEC12C] mx-auto mb-6" />
                             <p className="text-xl md:text-2xl text-[#325074] font-light italic leading-relaxed mb-4">
                                 "We don't just develop properties; we engineer ecosystems of prosperity where every square meter is a calculated step toward generational wealth."
@@ -371,7 +371,7 @@ const Home: React.FC = () => {
                                 transition={{ delay: i * 0.15, duration: 0.6 }}
                                 className="relative group"
                             >
-                                <div className={`${item.color} rounded-3xl p-10 h-full border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500`}>
+                                <div className={`${item.color} rounded-2xl p-10 h-full border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-500`}>
                                     <div className="flex items-center justify-between mb-8">
                                         <span className="text-6xl font-black text-[#325074]/10 tracking-tighter">{item.step}</span>
                                         <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#325074] shadow-lg group-hover:bg-[#FEC12C] group-hover:text-[#325074] transition-colors">
@@ -397,7 +397,7 @@ const Home: React.FC = () => {
                         transition={{ delay: 0.6, duration: 0.6 }}
                         className="text-center mt-16"
                     >
-                        <Link to="/invest" className="inline-flex items-center gap-4 bg-[#325074] text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#FEC12C] hover:text-[#325074] transition-all">
+                        <Link to="/invest" className="inline-flex items-center gap-4 bg-[#325074] text-white px-12 py-5 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#FEC12C] hover:text-[#325074] transition-all">
                             Start Investing <ArrowRight size={18} />
                         </Link>
                     </motion.div>
@@ -431,10 +431,10 @@ const Home: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:-translate-y-4 transition-all duration-500"
+                                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-500"
                             >
                                 <div className="aspect-[4/3] relative overflow-hidden">
-                                    <img src={p.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={p.name} />
+                                    <img src={p.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={p.name} loading="lazy" />
                                     <div className="absolute top-6 left-6 px-4 py-2 bg-[#325074]/80 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-lg">
                                         {p.tag}
                                     </div>
@@ -559,7 +559,7 @@ const Home: React.FC = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-white/5 backdrop-blur-3xl rounded-[40px] border border-white/10 p-12 shadow-2xl space-y-10"
+                            className="bg-white/5 backdrop-blur-3xl rounded-3xl border border-white/10 p-12 shadow-xl space-y-10"
                         >
                             <div className="flex justify-between items-center">
                                 <h4 className="text-white font-black uppercase tracking-widest text-xs">Portfolio Simulator</h4>
@@ -624,7 +624,7 @@ const Home: React.FC = () => {
                                     </div>
                                 </div>
 
-                                <Link to="/invest" className="block w-full py-6 bg-[#FEC12C] text-[#325074] rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform text-center">
+                                <Link to="/invest" className="block w-full py-6 bg-[#FEC12C] text-[#325074] rounded-xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] transition-transform text-center">
                                     Start Investing Now
                                 </Link>
                             </div>
@@ -650,7 +650,7 @@ const Home: React.FC = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="text-center p-8 bg-white rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow"
+                                className="text-center p-8 bg-white rounded-2xl shadow-md border border-slate-100 hover:shadow-lg transition-shadow"
                             >
                                 <div className="w-12 h-12 bg-[#FEC12C]/10 rounded-2xl flex items-center justify-center text-[#FEC12C] mx-auto mb-4">{stat.icon}</div>
                                 <p className="text-3xl md:text-4xl font-black text-[#325074] tracking-tighter mb-2">{stat.value}</p>
@@ -664,7 +664,7 @@ const Home: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-slate-100"
+                        className="bg-white rounded-2xl p-8 md:p-12 shadow-md border border-slate-100"
                     >
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex items-center gap-4">
@@ -717,10 +717,10 @@ const Home: React.FC = () => {
                             Join thousands of visionary investors building generational wealth through premium Abuja real estate.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-                            <Link to="/register" className="group flex items-center justify-center gap-4 bg-[#FEC12C] text-[#325074] px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl hover:bg-white transition-all">
+                            <Link to="/register" className="group flex items-center justify-center gap-4 bg-[#FEC12C] text-[#325074] px-12 py-6 rounded-xl font-black uppercase tracking-widest text-xs shadow-lg hover:bg-white transition-all">
                                 Create Free Account <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                             </Link>
-                            <Link to="/invest" className="flex items-center justify-center gap-4 bg-white/5 backdrop-blur-md border border-white/20 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all">
+                            <Link to="/invest" className="flex items-center justify-center gap-4 bg-white/5 backdrop-blur-md border border-white/20 text-white px-12 py-6 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all">
                                 Explore Properties
                             </Link>
                         </div>

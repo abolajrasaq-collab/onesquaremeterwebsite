@@ -73,8 +73,8 @@ const Invest: React.FC = () => {
         // Sort
         list = [...list].sort((a, b) => {
             switch (sortBy) {
-                case 'price-asc': return parsePrice(a.priceStart) - parsePrice(b.priceStart);
-                case 'price-desc': return parsePrice(b.priceStart) - parsePrice(a.priceStart);
+                case 'price-asc': return parsePrice(a.minInvestment) - parsePrice(b.minInvestment);
+                case 'price-desc': return parsePrice(b.minInvestment) - parsePrice(a.minInvestment);
                 case 'yield': return (b.expectedYield || 0) - (a.expectedYield || 0);
                 case 'appreciation': return (b.appreciationRate || 0) - (a.appreciationRate || 0);
                 case 'funded': return (b.fundedPercentage || 0) - (a.fundedPercentage || 0);
@@ -296,11 +296,11 @@ const Invest: React.FC = () => {
                                         <div>
                                             <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Starting From</p>
                                             <p className="text-lg font-black text-[#325074]">
-                                                {project.priceStart.includes('Contact') ? (
+                                                {project.minInvestment.includes('Contact') ? (
                                                     <Link to="/contact" className="hover:text-[#FEC12C] transition-colors underline decoration-dotted underline-offset-4">
-                                                        {project.priceStart}
+                                                        {project.minInvestment}
                                                     </Link>
-                                                ) : project.priceStart}
+                                                ) : project.minInvestment}
                                             </p>
                                         </div>
                                         {project.expectedYield && (

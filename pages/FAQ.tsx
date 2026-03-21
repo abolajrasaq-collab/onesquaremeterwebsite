@@ -133,7 +133,7 @@ const FAQ: React.FC = () => {
                         <button
                             key={cat}
                             onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
-                            className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeCategory === cat ? 'bg-[#325074] text-white shadow-lg' : 'bg-white text-slate-400 border border-slate-100 hover:bg-slate-50'}`}
+                            className={`flex items-center gap-2 px-5 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${activeCategory === cat ? 'bg-[#325074] text-white shadow-md' : 'bg-white text-slate-400 border border-slate-100 hover:bg-slate-50'}`}
                         >
                             {categoryIcons[cat]} {cat}
                         </button>
@@ -150,7 +150,7 @@ const FAQ: React.FC = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                                className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden"
                             >
                                 <button
                                     onClick={() => setOpenIndex(isOpen ? null : idx)}
@@ -188,7 +188,7 @@ const FAQ: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-16 bg-[#325074] rounded-3xl p-10 text-center text-white"
+                    className="mt-16 bg-[#325074] rounded-2xl p-10 text-center text-white"
                 >
                     <Phone size={32} className="text-[#FEC12C] mx-auto mb-4" />
                     <h3 className="text-2xl font-black tracking-tighter mb-3">Still have questions?</h3>
@@ -198,13 +198,13 @@ const FAQ: React.FC = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
                             to="/contact"
-                            className="inline-flex items-center justify-center gap-2 bg-[#FEC12C] text-[#325074] px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-amber-400 transition-all"
+                            className="inline-flex items-center justify-center gap-2 bg-[#FEC12C] text-[#325074] px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs hover:bg-amber-400 transition-all"
                         >
                             <Phone size={16} /> Contact Us
                         </Link>
                         <Link
                             to="/invest"
-                            className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-white/20 transition-all border border-white/10"
+                            className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-black uppercase tracking-widest text-xs hover:bg-white/20 transition-all border border-white/10"
                         >
                             <Briefcase size={16} /> Browse Projects
                         </Link>

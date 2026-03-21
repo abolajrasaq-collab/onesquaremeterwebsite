@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
                         </div>
 
                         {/* Google Maps Embed */}
-                        <div className="mt-12 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                        <div className="mt-12 rounded-xl overflow-hidden shadow-md border border-slate-200">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.1!2d7.41!3d9.06!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDMnMzYuMCJOIDfCsDI0JzM2LjAiRQ!5e0!3m2!1sen!2sng!4v1"
                                 width="100%"
@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-slate-100">
+                    <div className="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-slate-100">
                         <h2 className="text-2xl font-bold text-[#325074] mb-6">Send a Message</h2>
 
                         {/* Success Toast */}
@@ -117,7 +117,7 @@ const Contact: React.FC = () => {
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
-                                    className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl flex items-center gap-3"
+                                    className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-center gap-3"
                                 >
                                     <CheckCircle size={20} />
                                     <span className="font-medium">Thank you! We'll get back to you shortly.</span>
@@ -129,20 +129,20 @@ const Contact: React.FC = () => {
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
-                                    <input type="text" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="John" />
+                                    <input type="text" required className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="John" />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
-                                    <input type="text" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="Doe" />
+                                    <input type="text" required className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="Doe" />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                                <input type="email" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="john@example.com" />
+                                <input type="email" required className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="john@example.com" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                                <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all">
+                                <select className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all">
                                     <option>General Inquiry</option>
                                     <option>Sales & Investment</option>
                                     <option>Partnership</option>
@@ -151,9 +151,9 @@ const Contact: React.FC = () => {
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                                <textarea rows={4} required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="How can we help you?" />
+                                <textarea rows={4} required className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#325074]/20 focus:border-[#325074] transition-all" placeholder="How can we help you?" />
                             </div>
-                            <button type="submit" className="w-full bg-[#325074] text-white font-bold py-4 rounded-xl hover:bg-[#203650] transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" className="w-full bg-[#325074] text-white font-bold py-4 rounded-lg hover:bg-[#203650] transition-colors flex items-center justify-center gap-2">
                                 <Send size={18} /> Send Message
                             </button>
                         </form>

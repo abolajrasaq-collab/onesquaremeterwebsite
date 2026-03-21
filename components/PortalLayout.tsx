@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import BrandLogo from './BrandLogo';
-import {
-    LayoutDashboard,
-    Briefcase,
-    Wallet,
-    Settings,
-    LogOut,
-    Bell,
-    Menu,
-    X,
-    ChevronRight
+import { 
+    LayoutDashboard, 
+    Briefcase, 
+    Wallet, 
+    Settings, 
+    LogOut, 
+    Bell, 
+    Menu, 
+    X, 
+    ChevronRight,
+    Search
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
     { to: '/portal/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
@@ -24,136 +26,149 @@ const navItems = [
 const PortalLayout: React.FC = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
     const handleLogout = () => {
         logout();
-        navigate('/');
+        navigate('/login');
     };
 
-    const initials = user ? `${user.firstName[0]}${user.lastName[0]}` : 'U';
+    const initials = user?.name
+        ? user.name.split(' ').map(n => n[0]).join('').toUpperCase()
+        : 'JD';
+
+    const activeItem = navItems.find(item => location.pathname === item.to) || navItems[0];
 
     return (
-        <div className="min-h-screen bg-slate-50 flex">
-            {/* Sidebar — Desktop */}
-            <aside className="hidden lg:flex flex-col w-72 bg-[#325074] text-white fixed inset-y-0 left-0 z-50">
-                {/* Logo */}
-                <div className="p-8 border-b border-white/10">
-                    <BrandLogo variant="dark" size="sm" layout="horizontal" />
+        <div className="min-h-screen bg-[#f8fafc] flex font-outfit selection:bg-[#325074]/10 selection:text-[#325074]">
+            {/* Mobile Sidebar Overlay */}
+            <AnimatePresence>
+                {sidebarOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSidebarOpen(false)}
+                        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 lg:hidden"
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Sidebar */}
+            <aside className={`
+                fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200/60
+                transform transition-all duration-500 ease-in-out lg:translate-x-0 lg:static lg:flex lg:flex-col
+                ${sidebarOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full shadow-none'}
+            `}>
+                {/* Logo Section */}
+                <div className="p-8 pb-10">
+                    <BrandLogo variant="light" size="sm" layout="horizontal" />
+                    <div className="mt-8 px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[#325074] flex items-center justify-center text-white font-black shadow-md">
+                            {initials}
+                        </div>
+                        <div className="overflow-hidden">
+                            <p className="text-[#325074] font-black text-sm truncate uppercase tracking-tight">{user?.name || 'Investor Portal'}</p>
+                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">{user?.role || 'Verified Member'}</p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Navigation */}
-                <nav className="flex-1 py-8 px-4 space-y-2">
-                    {navItems.map(item => (
-                        <NavLink
-                            key={item.to}
-                            to={item.to}
-                            className={({ isActive }) =>
-                                `flex items-center gap-4 px-5 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${isActive
-                                    ? 'bg-[#FEC12C] text-[#325074]'
-                                    : 'text-white/60 hover:text-white hover:bg-white/5'
-                                }`
-                            }
-                        >
-                            {item.icon}
-                            <span className="text-[11px]">{item.label}</span>
-                        </NavLink>
-                    ))}
+                <nav className="flex-1 px-4 space-y-1">
+                    {navItems.map((item) => {
+                        const isActive = location.pathname === item.to;
+                        return (
+                            <NavLink
+                                key={item.to}
+                                to={item.to}
+                                onClick={() => setSidebarOpen(false)}
+                                className={`
+                                    flex items-center gap-4 px-5 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300
+                                    ${isActive 
+                                        ? 'bg-[#325074] text-white shadow-md scale-[1.02]' 
+                                        : 'text-slate-400 hover:text-[#325074] hover:bg-slate-50'
+                                    }
+                                `}
+                            >
+                                <span className={isActive ? 'text-[#FEC12C]' : ''}>{item.icon}</span>
+                                <span>{item.label}</span>
+                                {isActive && (
+                                    <motion.div 
+                                        layoutId="activeIndicator"
+                                        className="ml-auto w-1.5 h-1.5 rounded-full bg-[#FEC12C]" 
+                                    />
+                                )}
+                            </NavLink>
+                        );
+                    })}
                 </nav>
 
-                {/* User & Logout */}
-                <div className="p-6 border-t border-white/10 space-y-4">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#FEC12C] flex items-center justify-center text-[#325074] font-black text-sm">
-                            {initials}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-white truncate">{user?.firstName} {user?.lastName}</p>
-                            <p className="text-[10px] text-white/40 truncate">{user?.email}</p>
-                        </div>
-                    </div>
+                {/* Bottom Actions */}
+                <div className="p-6 border-t border-slate-100">
                     <button
                         onClick={handleLogout}
-                        className="w-full flex items-center justify-center gap-2 py-3 bg-white/5 rounded-xl text-white/60 hover:text-white hover:bg-red-500/20 transition-all text-[10px] font-black uppercase tracking-widest"
+                        className="w-full flex items-center gap-4 px-5 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] text-red-400 hover:text-red-500 hover:bg-red-50 transition-all group"
                     >
-                        <LogOut size={14} /> Sign Out
+                        <LogOut size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <span>Sign Out</span>
                     </button>
                 </div>
             </aside>
 
-            {/* Mobile Sidebar Overlay */}
-            {sidebarOpen && (
-                <div className="lg:hidden fixed inset-0 z-50 flex">
-                    <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)}></div>
-                    <div className="relative w-72 bg-[#325074] text-white flex flex-col">
-                        <div className="p-6 flex justify-between items-center border-b border-white/10">
-                            <BrandLogo variant="dark" size="sm" layout="horizontal" />
-                            <button onClick={() => setSidebarOpen(false)} className="text-white/60 hover:text-white">
-                                <X size={24} />
-                            </button>
-                        </div>
-                        <nav className="flex-1 py-6 px-4 space-y-2">
-                            {navItems.map(item => (
-                                <NavLink
-                                    key={item.to}
-                                    to={item.to}
-                                    onClick={() => setSidebarOpen(false)}
-                                    className={({ isActive }) =>
-                                        `flex items-center gap-4 px-5 py-4 rounded-2xl font-bold text-sm transition-all ${isActive
-                                            ? 'bg-[#FEC12C] text-[#325074]'
-                                            : 'text-white/60 hover:text-white hover:bg-white/5'
-                                        }`
-                                    }
-                                >
-                                    {item.icon}
-                                    <span className="text-[11px] uppercase tracking-widest">{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </nav>
-                        <div className="p-4 border-t border-white/10">
-                            <button
-                                onClick={handleLogout}
-                                className="w-full flex items-center justify-center gap-2 py-3 bg-white/5 rounded-xl text-white/60 hover:text-white hover:bg-red-500/20 transition-all text-xs font-bold"
-                            >
-                                <LogOut size={14} /> Sign Out
-                            </button>
+            {/* Main Content Area */}
+            <div className="flex-1 flex flex-col min-w-0 bg-[#f8fafc]">
+                {/* Header */}
+                <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 h-20 flex items-center px-6 lg:px-10 justify-between">
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={() => setSidebarOpen(true)}
+                            className="lg:hidden p-2 hover:bg-slate-50 rounded-lg transition-colors text-[#325074]"
+                        >
+                            <Menu size={24} />
+                        </button>
+                        <div className="hidden sm:flex items-center gap-3">
+                            <span className="text-[#325074] font-black text-xs uppercase tracking-[0.2em]">{activeItem.label}</span>
+                            <ChevronRight size={14} className="text-slate-300" />
+                            <span className="text-slate-400 font-bold text-xs uppercase tracking-widest">Overview</span>
                         </div>
                     </div>
-                </div>
-            )}
 
-            {/* Main Content */}
-            <div className="flex-1 lg:ml-72">
-                {/* Top Bar */}
-                <header className="bg-white border-b border-slate-100 sticky top-0 z-40">
-                    <div className="flex items-center justify-between px-6 lg:px-10 py-4">
-                        <div className="flex items-center gap-4">
-                            <button
-                                onClick={() => setSidebarOpen(true)}
-                                className="lg:hidden p-2 hover:bg-slate-100 rounded-xl transition-colors"
-                            >
-                                <Menu size={22} className="text-[#325074]" />
-                            </button>
-                            <div className="hidden md:flex items-center gap-2 text-xs text-slate-400">
-                                <span>Owner Portal</span>
-                                <ChevronRight size={14} />
-                                <span className="text-[#325074] font-bold">Dashboard</span>
-                            </div>
+                    <div className="flex items-center gap-3 lg:gap-6">
+                        {/* Search Bar - Desktop */}
+                        <div className="hidden md:flex items-center bg-slate-50 border border-slate-100 px-4 py-2 rounded-lg border-transparent focus-within:border-[#325074]/20 focus-within:bg-white transition-all w-64 lg:w-80 group">
+                            <Search size={18} className="text-slate-400 group-focus-within:text-[#325074]" />
+                            <input 
+                                type="text"
+                                placeholder="Search everything..."
+                                className="bg-transparent border-none focus:ring-0 text-xs font-medium w-full ml-3 text-[#325074] placeholder-slate-400"
+                            />
                         </div>
-                        <div className="flex items-center gap-4">
-                            <button className="relative p-2 hover:bg-slate-100 rounded-xl transition-colors">
-                                <Bell size={20} className="text-slate-400" />
-                                <span className="absolute top-1 right-1 w-2 h-2 bg-[#FEC12C] rounded-full"></span>
-                            </button>
-                            <div className="w-9 h-9 rounded-full bg-[#325074] flex items-center justify-center text-white text-xs font-black">
+
+                        {/* Notifications */}
+                        <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-lg transition-all group border border-slate-100">
+                            <Bell size={20} className="text-slate-400 group-hover:text-[#325074] group-hover:rotate-12 transition-all" />
+                            <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#FEC12C] rounded-full border-2 border-white"></span>
+                        </button>
+
+                        <div className="w-px h-8 bg-slate-200 mx-1 hidden sm:block"></div>
+
+                        {/* Profile Link */}
+                        <button className="flex items-center gap-3 p-1 hover:bg-slate-50 rounded-lg transition-all">
+                            <div className="w-9 h-9 rounded bg-slate-900 flex items-center justify-center text-white text-[10px] font-black shadow-sm">
                                 {initials}
                             </div>
-                        </div>
+                            <div className="hidden xl:block text-left">
+                                <p className="text-[#325074] font-black text-[10px] uppercase tracking-wider leading-none">{user?.name?.split(' ')[1] || 'User'}</p>
+                                <p className="text-slate-400 text-[9px] font-bold uppercase tracking-widest mt-1">Acct · 72412</p>
+                            </div>
+                        </button>
                     </div>
                 </header>
 
                 {/* Page Content */}
-                <main className="p-6 lg:p-10">
+                <main className="p-6 lg:p-10 flex-1 overflow-x-hidden">
                     <Outlet />
                 </main>
             </div>

@@ -49,7 +49,7 @@ const About: React.FC = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-block px-4 py-1.5 bg-[#325074]/10 text-[#325074] text-sm font-bold tracking-widest uppercase mb-6 rounded-full">
+                            <div className="inline-block px-4 py-1.5 bg-[#325074]/10 text-[#325074] text-sm font-bold tracking-widest uppercase mb-6 rounded-md">
                                 2022 - 2024
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-[#325074] mb-8 leading-tight">
@@ -66,7 +66,7 @@ const About: React.FC = () => {
                             </p>
                         </div>
                         <div className="relative">
-                            <div className="aspect-[4/5] bg-slate-200 rounded-2xl overflow-hidden relative z-10 shadow-2xl">
+                            <div className="aspect-[4/5] bg-slate-200 rounded-xl overflow-hidden relative z-10 shadow-lg border border-slate-100">
                                 <img
                                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000"
                                     alt="Construction Resilience"
@@ -140,7 +140,7 @@ const About: React.FC = () => {
                         <p className="text-slate-500 max-w-2xl mx-auto">Where Vision, Craftsmanship, and Governance Redefine Excellence.</p>
                     </div>
 
-                    <div className="bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden">
+                    <div className="bg-white p-10 md:p-16 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FEC12C]/5 rounded-bl-[200px] -z-0" />
                         <div className="relative z-10 space-y-8">
                             <p className="text-xl text-slate-600 leading-relaxed font-light">
@@ -171,40 +171,28 @@ const About: React.FC = () => {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                name: 'Alhaji Tajudeen Dantata',
-                                title: 'Chairman',
-                                bio: 'A visionary business magnate with over four decades of experience in infrastructure, energy, and real estate development across West Africa.',
+                                name: 'Alhassan A. DANTATA',
+                                title: 'Board Chairman, Non Executive Director',
+                                bio: 'He was the pioneer Production Manager, Nigeria Industrial Group, the first Nail and BRC factory in Northern Nigeria before becoming the Director of Finance of ASADA GROUP LIMITED an indigenous group with interest in Farming, Quarrying and Building Construction. He later became the Managing Director FARHAN OIL LIMITED, a company operating in down-stream sector with fleet of trucks and substantial number of filling stations across Nigeria. The Executive Chairman of Dantata Town Developers the developers of Dantata Town, Dantata District, Dantata Gardens and Dantata Cuty among many others. AlHassan is also the Executive Chairman, Dantata Plastics, Kano. A Non Executive Director and Board Chairman, One Square Meter, AlHassan delivers with clear focus on the development of bespoke real estates products and services.',
                                 image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=500',
                             },
                             {
-                                name: 'Engr. Mohammed Dantata',
-                                title: 'Managing Director / CEO',
-                                bio: 'An accomplished engineer and strategist leading the operational vision of 1SQM, overseeing all project delivery and strategic partnerships.',
+                                name: 'Bolaji A. Oluwatosin',
+                                title: 'Managing Director, Chief Executive Officer',
+                                bio: 'Oluwatosin is a seasoned architect and investment strategist with over two decades of experience in structuring novel, value-added real estate investments. He holds a Bachelor of Technology in Architecture from Ladoke Akintola University of Technology and an MBA from the prestigious Lagos Business School, Pan-Atlantic University. He has served as Executive Director of Wortheplus Limited and later co-founded One Square Meter by Dantata, an organisation structured as a value-added investment platform that uses real estate as its primary investment instrument. Under his leadership, the Company has developed a portfolio of distinctive, corporate-grade projects that are recognised by leading financial institutions as operating in a category distinct from conventional real estate development. Oluwatosin is known for his strategic vision, his ability to harness diverse capital and human resources, and his commitment to motivating cross-sectional teams of young professionals. As Managing Director and Chief Executive Officer, Oluwatosin drives the Company’s mission to deliver exceptional, investment-grade opportunities that combine financial returns with lasting asset value.',
+                                image: '/images/board/olutosin-bolaji.jpg',
+                            },
+                            {
+                                name: 'Engr. Nasiru A. Dantata',
+                                title: 'Non-Executive Director',
+                                bio: 'Engr. Nasiru Dantata is a civil engineer and construction industry leader with decades of experience managing large-scale infrastructure and real estate projects across Nigeria. He holds a Master of Science in Civil Engineering from Northeastern University, Boston, and is a registered engineer with the Council for the Regulation of Engineering in Nigeria (COREN). He is also a member of the Nigerian Society of Engineers, the Golden Key National Honours Society, and Tau Beta Pi Engineering Society in the United States. He has served as President of the Federation of Construction Industry (FOCI), the umbrella body representing Nigeria’s largest construction companies, where he championed skills development, artisan training, and the use of Sukuk financing to accelerate infrastructure delivery. Under his leadership, FOCI established training programmes in partnership with UNESCO and the Nigerian Institute of Building to address the shortage of skilled artisans in the industry. As Executive Director of Dantata & Sawoe Construction Company Limited, Nasiru has overseen the planning and execution of major highways, city infrastructure, and industrial projects across Nigeria, including the Abuja-Abaji and Kano-Maiduguri roads, the 10-lane Kubwa-Zuba expressway, and the Guzape District infrastructure in Abuja. His portfolio also includes landmark private developments such as the Asokoro Island project, a $900 million mixed-use development. Nasiru brings to the One Square Meter board deep expertise in project execution, infrastructure development, and construction industry governance, ensuring that the Company’s novel investment projects are delivered to the highest standards.',
                                 image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=500',
                             },
                             {
-                                name: 'Barrister Amina Dikko',
-                                title: 'Director, Legal & Compliance',
-                                bio: 'A seasoned corporate lawyer ensuring regulatory compliance, investor protection, and legal integrity across all projects and transactions.',
+                                name: 'Bolanle Alabi-Sami',
+                                title: 'Non-Executive Director',
+                                bio: 'Bolanle Alabi-Sami is a Certified General Accountant (CGA, USA) with over fifteen years of experience spanning banking, finance, and corporate risk management. She holds a Master of Science in Agricultural Economics from the University of Ibadan, a Postgraduate Diploma in Finance and Risk Management from Westford School of Management (Pearson UK), and a Master of Business Administration from the University of Gloucestershire. She is also a member of the Chartered Institute of Certified Public Accountants (CICPA, USA). Her career began at First Bank of Nigeria, progressing to relationship management at Dunia Finance PLC in Dubai. She later joined INDEVCO Group in Dubai, managing credit control, collections, and HR functions, before taking on her current role as Human Resources Coordinator at Napco National Dubai, where she oversees staffing, HR policy implementation, and performance management across business units. A Non-Executive Director at One Square Meter, Bolanle brings deep financial discipline and operational insight to the board, ensuring the Company’s ambitious real estate projects are grounded in sound governance and sustainable growth.',
                                 image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500',
-                            },
-                            {
-                                name: 'Arc. Yusuf Abdullahi',
-                                title: 'Director, Design & Architecture',
-                                bio: 'Award-winning architect blending contemporary aesthetics with functional innovation to create iconic residential spaces.',
-                                image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=500',
-                            },
-                            {
-                                name: 'Dr. Fatima Bello',
-                                title: 'Director, Finance & Investments',
-                                bio: 'A finance expert specializing in real estate asset structuring, investment modeling, and sustainable growth strategies.',
-                                image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=500',
-                            },
-                            {
-                                name: 'Mallam Ibrahim Sani',
-                                title: 'Director, Construction & Projects',
-                                bio: 'Civil engineering veteran with 25+ years leading large-scale construction, ensuring quality, safety, and timely delivery.',
-                                image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=500',
                             },
                         ].map((member, idx) => (
                             <motion.div
@@ -239,7 +227,7 @@ const About: React.FC = () => {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-5xl font-black text-white mb-8">Ready to Build Your Legacy?</h2>
                     <p className="text-white/70 text-lg mb-10">Join the bold dreamers and believers in better. Invest in a future built with precision.</p>
-                    <Link to="/contact" className="inline-block bg-[#FEC12C] text-[#325074] px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors">
+                    <Link to="/contact" className="inline-block bg-[#FEC12C] text-[#325074] px-10 py-4 rounded-xl font-bold text-lg hover:bg-white transition-colors">
                         Contact Us Today
                     </Link>
                 </div>

@@ -32,9 +32,11 @@ export interface UserProfile {
     id: string;
     firstName: string;
     lastName: string;
+    name: string;
     email: string;
     phone: string;
     avatar: string;
+    role: string;
     kycStatus: 'verified' | 'pending' | 'not_started';
     joinDate: string;
     referralCode: string;
@@ -49,9 +51,11 @@ export const mockUser: UserProfile = {
     id: 'USR-001',
     firstName: 'Amara',
     lastName: 'Ibrahim',
+    name: 'Amara Ibrahim',
     email: 'amara.ibrahim@gmail.com',
     phone: '+234 805 123 4567',
     avatar: '',
+    role: 'Investor',
     kycStatus: 'verified',
     joinDate: '2024-06-15',
     referralCode: '1SQM-AMARA24',

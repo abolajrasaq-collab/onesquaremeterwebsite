@@ -64,7 +64,7 @@ const WalletPage: React.FC = () => {
                 </div>
                 <button
                     onClick={() => setShowFundModal(true)}
-                    className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-amber-400 transition-all shadow-lg"
+                    className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-amber-400 transition-all shadow-md"
                 >
                     <Plus size={16} /> Fund Wallet
                 </button>
@@ -75,7 +75,7 @@ const WalletPage: React.FC = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-[#325074] text-white rounded-2xl p-8 shadow-lg"
+                    className="bg-[#325074] text-white rounded-xl p-8 shadow-md"
                 >
                     <div className="flex items-center gap-3 mb-4">
                         <WalletIcon size={20} className="text-[#FEC12C]" />
@@ -87,7 +87,7 @@ const WalletPage: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100"
+                    className="bg-white rounded-xl p-8 shadow-md border border-slate-100"
                 >
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Total Deposits</p>
                     <p className="text-3xl font-black text-[#325074] tracking-tighter">₦{totalDeposits.toLocaleString()}</p>
@@ -96,7 +96,7 @@ const WalletPage: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100"
+                    className="bg-white rounded-xl p-8 shadow-md border border-slate-100"
                 >
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Total Yields Earned</p>
                     <p className="text-3xl font-black text-emerald-500 tracking-tighter">₦{totalYields.toLocaleString()}</p>
@@ -104,7 +104,7 @@ const WalletPage: React.FC = () => {
             </div>
 
             {/* Transaction History */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+            <div className="bg-white rounded-xl p-8 shadow-md border border-slate-100">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                     <h3 className="text-sm font-black text-[#325074] uppercase tracking-widest flex items-center gap-2">
                         <Clock size={16} /> Transaction History
@@ -115,7 +115,7 @@ const WalletPage: React.FC = () => {
                             <button
                                 key={f}
                                 onClick={() => setFilter(f)}
-                                className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? 'bg-[#325074] text-white' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'}`}
+                                className={`px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? 'bg-[#325074] text-white' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'}`}
                             >
                                 {filterLabels[f]}
                             </button>
@@ -132,9 +132,9 @@ const WalletPage: React.FC = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: i * 0.05 }}
-                                className="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors"
+                                className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors"
                             >
-                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${colors.bg} ${colors.text}`}>
+                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${colors.bg} ${colors.text}`}>
                                     {txnIcons[txn.type]}
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -165,20 +165,20 @@ const WalletPage: React.FC = () => {
                 )}
             </div>
 
-            {/* Fund Wallet Modal */}
+             {/* Fund Wallet Modal */}
             {showFundModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-white rounded-3xl p-10 max-w-md w-full shadow-2xl space-y-8"
+                        className="bg-white rounded-xl p-10 max-w-md w-full shadow-md border border-slate-100 space-y-8"
                     >
                         <div>
                             <h3 className="text-2xl font-black text-[#325074] tracking-tighter">Fund Your Wallet</h3>
                             <p className="text-slate-400 text-sm mt-1">Transfer funds to your 1SQM wallet to invest in properties.</p>
                         </div>
 
-                        <div className="bg-slate-50 rounded-2xl p-6 space-y-3">
+                        <div className="bg-slate-50 rounded-xl p-6 space-y-3">
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Bank Transfer Details</p>
                             <div className="space-y-2">
                                 <div className="flex justify-between">
@@ -203,13 +203,13 @@ const WalletPage: React.FC = () => {
                         <div className="flex gap-4">
                             <button
                                 onClick={() => setShowFundModal(false)}
-                                className="flex-1 py-4 bg-slate-100 text-slate-500 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-200 transition-all"
+                                className="flex-1 py-4 bg-slate-100 text-slate-500 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-slate-200 transition-all"
                             >
                                 Close
                             </button>
                             <button
                                 onClick={() => setShowFundModal(false)}
-                                className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#325074] text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#264060] transition-all"
+                                className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#325074] text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#264060] transition-all"
                             >
                                 <Download size={14} /> Copy Details
                             </button>

@@ -1,180 +1,267 @@
 import * as React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { mockInvestments } from '../../data/mockPortfolio';
-import {
-    TrendingUp,
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+    Briefcase, 
+    PieChart, 
+    ArrowUpRight, 
+    Zap, 
+    Filter, 
+    LayoutGrid, 
+    LayoutList,
+    Search,
+    MapPin,
     Calendar,
-    FileText,
-    ArrowRight,
-    Download,
-    CheckCircle2,
-    Clock,
-    AlertCircle
+    ChevronRight,
+    TrendingUp,
+    ShieldCheck,
+    Download
 } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 const Portfolio: React.FC = () => {
-    const totalInvested = mockInvestments.reduce((sum, inv) => sum + inv.amountInvested, 0);
-    const totalCurrentValue = mockInvestments.reduce((sum, inv) => sum + inv.currentValue, 0);
-    const totalReturns = totalCurrentValue - totalInvested;
+    const [viewMode, setViewMode] = React.useState<'grid' | 'list'>('grid');
+    const [filter, setFilter] = React.useState('All');
+
+    const holdings = [
+        { 
+            id: 'PROP-001', 
+            name: 'The MetroView', 
+            units: 5, 
+            invested: '₦10,500,000', 
+            current: '₦11,400,000', 
+            yield: '8.5%', 
+            status: 'Selling',
+            location: 'Jabi, Abuja',
+            image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800'
+        },
+        { 
+            id: 'PROP-002', 
+            name: 'Dantata Hostels', 
+            units: 12, 
+            invested: '₦25,000,000', 
+            current: '₦26,850,000', 
+            yield: '12.2%', 
+            status: 'Sold Out',
+            location: 'Nile District, Abuja',
+            image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800'
+        },
+        { 
+            id: 'PROP-003', 
+            name: 'Copa Cabana II', 
+            units: 3, 
+            invested: '₦15,000,000', 
+            current: '₦15,200,000', 
+            yield: '7.8%', 
+            status: 'Selling',
+            location: 'Wumba District, Abuja',
+            image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800'
+        },
+    ];
+
+    const stats = [
+        { label: 'Total Invested', value: '₦50.5M', icon: <Briefcase size={20} />, trend: '+4.2%' },
+        { label: 'Portfolio Value', value: '₦53.4M', icon: <TrendingUp size={20} />, trend: '+12.5%' },
+        { label: 'Avg Rental Yield', value: '9.4%', icon: <Zap size={20} />, trend: 'Target: 10%' },
+        { label: 'Total Properties', value: '12 Assets', icon: <ShieldCheck size={20} />, trend: 'Verified' },
+    ];
 
     return (
-        <div className="space-y-8">
-            <SEO title="Portfolio — Owner Portal | 1SQM" description="Track and manage your real estate investments." />
+        <div className="space-y-12 pb-20 selection:bg-[#325074]/10 selection:text-[#325074] font-outfit">
+            <SEO 
+                title="Portfolio · Asset Management | 1SQM"
+                description="Overview of your fractional real estate holdings."
+            />
 
-            <div>
-                <h1 className="text-3xl font-black text-[#325074] tracking-tighter">Your Portfolio</h1>
-                <p className="text-slate-400 text-sm mt-1">Track performance, payments, and documents for each investment.</p>
-            </div>
-
-            {/* Summary Bar */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {[
-                    { label: 'Total Invested', value: `₦${totalInvested.toLocaleString()}` },
-                    { label: 'Current Value', value: `₦${totalCurrentValue.toLocaleString()}` },
-                    { label: 'Total Returns', value: `₦${totalReturns.toLocaleString()}`, positive: true }
-                ].map((item, i) => (
-                    <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{item.label}</p>
-                        <p className={`text-2xl font-black tracking-tighter mt-2 ${item.positive ? 'text-emerald-500' : 'text-[#325074]'}`}>{item.value}</p>
-                    </div>
+            {/* Stats Bar */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                {stats.map((stat, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="bg-white p-8 rounded-xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all group"
+                    >
+                        <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center text-[#325074] border border-slate-100 group-hover:bg-[#325074] group-hover:text-white transition-all duration-500 mb-6">
+                            {stat.icon}
+                        </div>
+                        <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">{stat.label}</p>
+                        <h3 className="text-3xl font-black text-[#325074] tracking-tight mb-2">{stat.value}</h3>
+                        <p className={`text-[10px] font-black uppercase tracking-widest ${stat.trend.startsWith('+') ? 'text-emerald-500' : 'text-slate-400'}`}>
+                            {stat.trend}
+                        </p>
+                    </motion.div>
                 ))}
             </div>
 
-            {/* Investment Detail Cards */}
-            <div className="space-y-8">
-                {mockInvestments.map((inv, i) => {
-                    const paymentProgress = Math.round((inv.totalPaid / inv.totalCost) * 100);
-                    const appreciation = ((inv.currentValue - inv.amountInvested) / inv.amountInvested * 100).toFixed(1);
+            {/* Filter & Search Bar */}
+            <section className="bg-white rounded-xl p-10 border border-slate-200/60 shadow-sm">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-10">
+                    <div className="flex flex-wrap items-center gap-4">
+                        <div className="flex bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+                            {['All', 'Residential', 'Hostels', 'Commercial'].map(tab => (
+                                <button 
+                                    key={tab}
+                                    onClick={() => setFilter(tab)}
+                                    className={`px-6 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${filter === tab ? 'bg-[#325074] text-white shadow-md' : 'text-slate-400 hover:text-[#325074]'}`}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="w-px h-10 bg-slate-100 hidden md:block"></div>
+                        <div className="flex bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+                            <button 
+                                onClick={() => setViewMode('grid')}
+                                className={`p-3 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-[#325074] text-white shadow-md' : 'text-slate-400 hover:text-[#325074]'}`}
+                            >
+                                <LayoutGrid size={18} />
+                            </button>
+                            <button 
+                                onClick={() => setViewMode('list')}
+                                className={`p-3 rounded-lg transition-all ${viewMode === 'list' ? 'bg-[#325074] text-white shadow-md' : 'text-slate-400 hover:text-[#325074]'}`}
+                            >
+                                <LayoutList size={18} />
+                            </button>
+                        </div>
+                    </div>
 
-                    return (
-                        <motion.div
-                            key={inv.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden"
-                        >
-                            <div className="md:flex">
-                                {/* Image */}
-                                <div className="md:w-72 h-48 md:h-auto bg-[#325074] relative overflow-hidden flex-shrink-0">
-                                    <img src={inv.image} alt={inv.projectName} className="w-full h-full object-cover opacity-80" />
-                                    <div className="absolute top-4 left-4">
-                                        <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${inv.status === 'Active' ? 'bg-emerald-500 text-white' : inv.status === 'Matured' ? 'bg-[#FEC12C] text-[#325074]' : 'bg-slate-200 text-slate-500'}`}>
-                                            {inv.status}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Details */}
-                                <div className="flex-1 p-8 space-y-6">
-                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                                        <div>
-                                            <h3 className="text-2xl font-black text-[#325074] tracking-tight">{inv.projectName}</h3>
-                                            <p className="text-sm text-slate-400 mt-1">{inv.unitName} • Invested {new Date(inv.investmentDate).toLocaleDateString('en-NG', { month: 'short', year: 'numeric' })}</p>
-                                        </div>
-                                        <Link
-                                            to={`/projects/${inv.projectId}`}
-                                            className="inline-flex items-center gap-2 text-xs text-[#FEC12C] font-bold hover:text-[#325074]"
-                                        >
-                                            View Project <ArrowRight size={14} />
-                                        </Link>
-                                    </div>
-
-                                    {/* Performance Grid */}
-                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                                        <div className="bg-slate-50 rounded-xl p-4">
-                                            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Invested</p>
-                                            <p className="text-lg font-black text-[#325074] mt-1">₦{inv.amountInvested.toLocaleString()}</p>
-                                        </div>
-                                        <div className="bg-slate-50 rounded-xl p-4">
-                                            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Current Value</p>
-                                            <p className="text-lg font-black text-emerald-500 mt-1">₦{inv.currentValue.toLocaleString()}</p>
-                                        </div>
-                                        <div className="bg-slate-50 rounded-xl p-4">
-                                            <div className="flex items-center gap-1">
-                                                <TrendingUp size={12} className="text-emerald-500" />
-                                                <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Appreciation</p>
-                                            </div>
-                                            <p className="text-lg font-black text-emerald-500 mt-1">+{appreciation}%</p>
-                                        </div>
-                                        <div className="bg-slate-50 rounded-xl p-4">
-                                            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Annual Yield</p>
-                                            <p className="text-lg font-black text-[#FEC12C] mt-1">{inv.rentalYieldRate}%</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Payment Progress */}
-                                    <div className="space-y-3">
-                                        <div className="flex justify-between items-center">
-                                            <p className="text-xs font-bold text-slate-500">Payment Progress</p>
-                                            <p className="text-xs font-black text-[#325074]">{paymentProgress}% Complete</p>
-                                        </div>
-                                        <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                animate={{ width: `${paymentProgress}%` }}
-                                                transition={{ delay: 0.3, duration: 0.8 }}
-                                                className={`h-full rounded-full ${paymentProgress === 100 ? 'bg-emerald-500' : 'bg-[#FEC12C]'}`}
-                                            ></motion.div>
-                                        </div>
-                                        <div className="flex justify-between text-[10px] text-slate-400">
-                                            <span>₦{inv.totalPaid.toLocaleString()} paid</span>
-                                            <span>₦{inv.totalCost.toLocaleString()} total</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Bottom Actions */}
-                                    <div className="flex flex-wrap gap-3">
-                                        {inv.nextPaymentDate && (
-                                            <div className="flex items-center gap-2 bg-amber-50 px-4 py-2 rounded-xl">
-                                                <Calendar size={14} className="text-amber-600" />
-                                                <span className="text-xs font-bold text-amber-700">
-                                                    Next: ₦{inv.nextPaymentAmount?.toLocaleString()} on {new Date(inv.nextPaymentDate).toLocaleDateString('en-NG', { day: 'numeric', month: 'short' })}
-                                                </span>
-                                            </div>
-                                        )}
-                                        <button className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-200 transition-colors">
-                                            <Download size={14} /> Certificate
-                                        </button>
-                                        <button className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-200 transition-colors">
-                                            <FileText size={14} /> Statement
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    );
-                })}
-            </div>
-
-            {/* Payment Timeline */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                <h3 className="text-sm font-black text-[#325074] uppercase tracking-widest mb-6">Upcoming Payments</h3>
-                <div className="space-y-4">
-                    {mockInvestments
-                        .filter(inv => inv.nextPaymentDate)
-                        .sort((a, b) => new Date(a.nextPaymentDate!).getTime() - new Date(b.nextPaymentDate!).getTime())
-                        .map((inv, i) => {
-                            const daysUntil = Math.ceil((new Date(inv.nextPaymentDate!).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
-                            return (
-                                <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl">
-                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${daysUntil <= 7 ? 'bg-red-50 text-red-500' : daysUntil <= 30 ? 'bg-amber-50 text-amber-500' : 'bg-emerald-50 text-emerald-500'}`}>
-                                        {daysUntil <= 7 ? <AlertCircle size={18} /> : daysUntil <= 30 ? <Clock size={18} /> : <CheckCircle2 size={18} />}
-                                    </div>
-                                    <div className="flex-1">
-                                        <p className="text-sm font-bold text-[#325074]">{inv.projectName} — {inv.unitName}</p>
-                                        <p className="text-[10px] text-slate-400 mt-0.5">
-                                            Due {new Date(inv.nextPaymentDate!).toLocaleDateString('en-NG', { day: 'numeric', month: 'long', year: 'numeric' })} • {daysUntil} days away
-                                        </p>
-                                    </div>
-                                    <p className="text-sm font-black text-[#325074]">₦{inv.nextPaymentAmount?.toLocaleString()}</p>
-                                </div>
-                            );
-                        })}
+                    <div className="flex items-center gap-4 w-full md:w-auto">
+                        <div className="relative flex-1 md:w-72 group">
+                            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#325074] transition-colors" />
+                            <input 
+                                type="text"
+                                placeholder="Search by Project Name..."
+                                className="w-full bg-slate-50 border border-slate-100 pl-11 pr-4 py-4 rounded-lg text-xs font-black uppercase tracking-widest focus:bg-white focus:border-[#325074]/30 transition-all outline-none"
+                            />
+                        </div>
+                        <button className="flex items-center gap-3 bg-[#325074] text-white px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] shadow-md shadow-indigo-900/10 active:scale-95 transition-all">
+                            <Download size={18} /> Export List
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Assets Display */}
+            <AnimatePresence mode="wait">
+                {viewMode === 'grid' ? (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+                    >
+                        {holdings.map((asset, i) => (
+                            <motion.div
+                                key={asset.id}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group bg-white rounded-xl border border-slate-200/60 overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-500"
+                            >
+                                <div className="relative px-6 pt-6 mb-8">
+                                    <div className="relative h-64 rounded-xl overflow-hidden">
+                                        <img src={asset.image} alt={asset.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                                        <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#325074] to-transparent">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <MapPin size={12} className="text-[#FEC12C]" />
+                                                <span className="text-white/60 text-[10px] font-black uppercase tracking-widest">{asset.location}</span>
+                                            </div>
+                                            <h3 className="text-white font-black text-xl uppercase tracking-tight">{asset.name}</h3>
+                                        </div>
+                                        <div className="absolute top-6 left-6 flex flex-col gap-2">
+                                            <span className="bg-white/90 backdrop-blur-md text-[#325074] px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest border border-white/20 shadow-md">
+                                                {asset.units} Units
+                                            </span>
+                                            <span className="bg-[#325074]/90 backdrop-blur-md text-[#FEC12C] px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest border border-white/10 shadow-md">
+                                                {asset.yield} Yield
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="px-10 pb-10">
+                                    <div className="grid grid-cols-2 gap-8 mb-10 pb-10 border-b border-slate-50 relative">
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 bottom-0 w-px bg-slate-50"></div>
+                                        <div>
+                                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Initial Cost</p>
+                                            <p className="text-xl font-black text-[#325074] tracking-tight">{asset.invested}</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Market Val</p>
+                                            <p className="text-xl font-black text-[#325074] tracking-tight">{asset.current}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-500">
+                                                <ArrowUpRight size={16} />
+                                            </div>
+                                            <span className="text-emerald-500 font-black text-xs uppercase tracking-tight">+8.5% Incr.</span>
+                                        </div>
+                                        <button className="flex items-center gap-3 bg-[#325074] text-white px-8 py-3.5 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] shadow-md shadow-indigo-900/10 active:scale-95 transition-all">
+                                            Quick View
+                                        </button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                ) : (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="bg-white rounded-xl border border-slate-200/60 overflow-hidden shadow-sm"
+                    >
+                        <table className="w-full">
+                            <thead>
+                                <tr className="border-b border-slate-100">
+                                    <th className="text-left py-8 px-10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Asset Details</th>
+                                    <th className="text-left py-8 px-10 text-slate-400 text-[10px] font-black uppercase tracking-widest text-center">Owned</th>
+                                    <th className="text-left py-8 px-10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Growth</th>
+                                    <th className="text-left py-8 px-10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Market Value</th>
+                                    <th className="text-right py-8 px-10 text-slate-400 text-[10px] font-black uppercase tracking-widest">Yield</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-50">
+                                {holdings.map((asset, i) => (
+                                    <tr key={i} className="group hover:bg-slate-50/50 transition-all cursor-pointer">
+                                        <td className="py-8 px-10">
+                                            <div className="flex items-center gap-6">
+                                                <div className="w-16 h-12 bg-slate-100 rounded-xl overflow-hidden shadow-sm">
+                                                    <img src={asset.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-[#325074] font-black text-sm uppercase tracking-tight">{asset.name}</p>
+                                                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1">{asset.location}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="py-8 px-10 text-center">
+                                            <span className="bg-slate-100 text-[#325074] px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest border border-slate-200/60">
+                                                {asset.units} Meters
+                                            </span>
+                                        </td>
+                                        <td className="py-8 px-10">
+                                            <div className="flex items-center gap-2 text-emerald-500 font-black text-xs">
+                                                <ArrowUpRight size={14} />
+                                                <span>+12.4%</span>
+                                            </div>
+                                        </td>
+                                        <td className="py-8 px-10">
+                                            <span className="text-[#325074] font-black text-sm tracking-tight">{asset.current}</span>
+                                        </td>
+                                        <td className="py-8 px-10 text-right">
+                                            <span className="text-emerald-500 font-black text-sm">{asset.yield} APY</span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
