@@ -31,13 +31,13 @@ const NotFound: React.FC = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             to="/"
-                            className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors"
+                            className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors"
                         >
                             <Home size={18} /> Back to Home
                         </Link>
                         <button
                             onClick={() => window.history.back()}
-                            className="inline-flex items-center gap-2 border border-white/20 text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
+                            className="inline-flex items-center gap-2 border border-white/20 text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
                         >
                             <ArrowLeft size={18} /> Go Back
                         </button>

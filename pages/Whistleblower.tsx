@@ -34,7 +34,7 @@ const Whistleblower: React.FC = () => {
             {/* Policy Content */}
             <section className="py-24 px-6 lg:px-12 bg-slate-50">
                 <div className="max-w-4xl mx-auto space-y-12">
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <ShieldAlert className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">Our Commitment</h3>
@@ -44,7 +44,7 @@ const Whistleblower: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <Lock className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">Confidentiality Guarantee</h3>
@@ -55,7 +55,7 @@ const Whistleblower: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <CheckCircle className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">What Can Be Reported</h3>
@@ -70,13 +70,13 @@ const Whistleblower: React.FC = () => {
                     </div>
 
                     {/* Contact CTA */}
-                    <div className="bg-[#325074] p-8 rounded-2xl text-center">
+                    <div className="bg-[#325074] p-8 rounded-xl text-center">
                         <Mail className="text-[#FEC12C] mx-auto mb-4" size={32} />
                         <h3 className="text-2xl font-bold text-white mb-3">Submit a Report</h3>
                         <p className="text-white/70 mb-6">All reports are investigated thoroughly by our compliance team.</p>
                         <a
                             href="mailto:compliance@onesquaremeter.com"
-                            className="inline-block bg-[#FEC12C] text-[#325074] px-8 py-3 rounded-full font-bold hover:bg-white transition-colors"
+                            className="inline-block bg-[#FEC12C] text-[#325074] px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors"
                         >
                             compliance@onesquaremeter.com
                         </a>

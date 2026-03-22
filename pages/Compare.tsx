@@ -72,7 +72,7 @@ const Compare: React.FC = () => {
 
             <div className="max-w-6xl mx-auto px-6 lg:px-12 py-12">
                 {/* Project Headers */}
-                <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden mb-8">
+                <div className="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden mb-8">
                     <div className={`grid grid-cols-${compared.length + 1}`} style={{ gridTemplateColumns: `200px repeat(${compared.length}, 1fr)` }}>
                         {/* Empty top-left cell */}
                         <div className="p-6 bg-slate-50 border-b border-r border-slate-100" />
@@ -143,7 +143,7 @@ const Compare: React.FC = () => {
                 </div>
 
                 {/* Feature Comparison */}
-                <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden mb-8">
+                <div className="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden mb-8">
                     <div className="p-6 border-b border-slate-100 bg-slate-50">
                         <h3 className="text-sm font-black text-[#325074] uppercase tracking-widest">Feature Comparison</h3>
                     </div>
@@ -171,7 +171,7 @@ const Compare: React.FC = () => {
 
                 {/* Action Row */}
                 <div
-                    className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden"
+                    className="bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden"
                     style={{ display: 'grid', gridTemplateColumns: `200px repeat(${compared.length}, 1fr)` }}
                 >
                     <div className="p-6 bg-slate-50 border-r border-slate-100 flex items-center">
@@ -181,7 +181,7 @@ const Compare: React.FC = () => {
                         <div key={i} className="p-6 flex items-center justify-center">
                             <Link
                                 to={`/projects/${project.id}`}
-                                className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-amber-400 transition-all"
+                                className="inline-flex items-center gap-2 bg-[#FEC12C] text-[#325074] px-6 py-3 rounded-lg font-black uppercase tracking-widest text-[10px] hover:bg-amber-400 transition-all"
                             >
                                 Invest <ChevronRight size={14} />
                             </Link>

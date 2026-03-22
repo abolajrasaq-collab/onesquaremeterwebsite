@@ -44,38 +44,80 @@ const About: React.FC = () => {
                 </div>
             </section>
 
-            {/* Strategic Pause Section */}
-            <section className="py-24 px-6 lg:px-12 bg-slate-50">
-                <div className="max-w-5xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <div className="inline-block px-4 py-1.5 bg-[#325074]/10 text-[#325074] text-sm font-bold tracking-widest uppercase mb-6 rounded-md">
-                                2022 - 2024
+            {/* The Art of Pressing Pause Section */}
+            <section className="py-24 px-6 lg:px-12 bg-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-[#FEC12C]/5 skew-x-12 -translate-y-20 pointer-events-none"></div>
+                <div className="max-w-6xl mx-auto relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="inline-block px-4 py-1.5 bg-[#325074]/10 text-[#325074] text-xs font-black tracking-[0.2em] uppercase mb-6 rounded-md border border-[#325074]/5">
+                                Strategic Resilience (2022-2024)
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-black text-[#325074] mb-8 leading-tight">
-                                Real Estate <span className="text-[#FEC12C]">Reimagined</span>
+                            <h2 className="text-4xl md:text-5xl font-black text-[#325074] mb-8 leading-tight tracking-tighter">
+                                The Art of <span className="text-[#FEC12C]">Pressing Pause</span>
                             </h2>
-                            <p className="text-slate-600 leading-relaxed mb-6">
-                                Welcome to One Square Meter by Dantata. Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
-                            </p>
-                            <p className="text-slate-600 leading-relaxed mb-6">
-                                From elite enclaves to self-complete intentional communities, our projects blend avant-garde design with relentless ROI. Backed by industry trust and tested by economic storms, we thrive where others falter.
-                            </p>
-                            <p className="text-slate-600 leading-relaxed">
-                                This is real estate reimagined: bold, resilient, and crafted to transcend generations.
-                            </p>
-                        </div>
-                        <div className="relative">
-                            <div className="aspect-[4/5] bg-slate-200 rounded-xl overflow-hidden relative z-10 shadow-lg border border-slate-100">
+                            <blockquote className="border-l-4 border-[#FEC12C] pl-6 mb-10 italic text-xl text-slate-500 font-light italic leading-relaxed">
+                                "Imagine pausing a symphony mid-performance, not because the musicians faltered, but to let the audience hear the silence before the crescendo."
+                            </blockquote>
+                            <div className="space-y-6 text-slate-600 leading-relaxed font-light">
+                                <p>
+                                    Post-2022, One Square Meter by Dantata made a bold strategic move: we pressed pause on sales and slowed down construction. This was not a retreat, but a rebellion against inflation and compromised quality.
+                                </p>
+                                <div className="grid gap-6 mt-8">
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
+                                            <Zap className="w-5 h-5 text-orange-600" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-black text-[#325074] text-sm uppercase tracking-wider mb-1">The Why</h4>
+                                            <p className="text-sm">Amidst macroeconomic volatility and skyrocketing building costs, we refused to let market conditions dictate the quality of our homes. While competitors sold fixed-price inventories they couldn't deliver, we held our units close.</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
+                                            <ShieldCheck className="w-5 h-5 text-blue-600" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-black text-[#325074] text-sm uppercase tracking-wider mb-1">The Result</h4>
+                                            <p className="text-sm">Our buildings outlived the lies. Investigations and audits found project assets far exceeding liabilities. We absorbed inflationary blows so our subscribers wouldn't have to.</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
+                                            <TrendingUp className="w-5 h-5 text-green-600" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-black text-[#325074] text-sm uppercase tracking-wider mb-1">The Return</h4>
+                                            <p className="text-sm">Today, with arbitration resolved and construction at peak intensity, we are back. Handovers are ongoing, and we are delivering the same uncompromising luxury we promised—unbroken by time.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative lg:pl-12"
+                        >
+                            <div className="aspect-[4/5] bg-slate-200 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                                 <img
                                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000"
                                     alt="Construction Resilience"
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                    className="w-full h-full object-cover"
                                 />
-                                <div className="absolute inset-0 bg-[#325074]/20"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#325074]/40 to-transparent"></div>
+                                <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/50">
+                                    <p className="text-[#325074] font-black text-2xl mb-1">Protector of Value</p>
+                                    <p className="text-slate-600 text-sm">Our "Hero-Magician" archetype ensures that we are not just developers, but guardians of your legacy.</p>
+                                </div>
                             </div>
-                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#FEC12C]/20 rounded-full blur-[50px] -z-0" />
-                        </div>
+                            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FEC12C]/10 rounded-full blur-3xl -z-10"></div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

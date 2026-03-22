@@ -62,9 +62,9 @@ export const projects: Record<string, ProjectData> = {
             'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
             'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800'
         ],
-        minInvestment: '₦35,000,000',
+        minInvestment: '₦50,000,000',
         annualYield: '8.5%',
-        capitalAppreciation: '12%',
+        capitalAppreciation: '15%+',
         amenities: ['Rooftop Infinity Pool', 'Smart Home Integration', '24/7 Concierge', 'Private Gym', 'Automated Security'],
         features: ['Smart Home Automation', 'High-speed Elevators', 'Rooftop Lounge', '24/7 Power Supply'],
         offerings: [
@@ -75,33 +75,33 @@ export const projects: Record<string, ProjectData> = {
         ],
         units: [
             {
-                name: 'The Signature Penthouse',
+                name: 'Signature Penthouse (4-Bed Semi-Detached Triplex + BQ)',
                 type: '4 Bedroom Penthouse',
-                price: '₦215,000,000',
+                price: '₦180,000,000',
                 sqm: '450',
                 description: 'The pinnacle of luxury living with panoramic views and private terrace.',
                 features: ['Private Elevator', 'Smart Automation', 'Chef-grade Kitchen']
             },
             {
-                name: 'The Deluxe Suite',
+                name: 'Deluxe Suite (3-Bed Semi-Detached Duplex + BQ)',
                 type: '3 Bedroom Apartment',
-                price: '₦145,000,000',
+                price: '₦150,000,000',
                 sqm: '280',
                 description: 'Spacious high-floor apartment with floor-to-ceiling windows.',
                 features: ['En-suite Bedrooms', 'Open-plan Living', 'Wrap-around Balcony']
             },
             {
-                name: 'The Vista Type 1',
+                name: 'Vista Type 2 (2-Bedroom Apartment)',
                 type: '2 Bedroom Apartment',
-                price: '₦85,000,000',
+                price: '₦80,000,000',
                 sqm: '180',
                 description: 'Modern urban home perfect for professionals or small families.',
                 features: ['Modern Finishes', 'Integrated Appliances', 'Pool View']
             },
             {
-                name: 'The Vista Type 2',
+                name: 'Vista Type 1 (1-Bedroom Apartment)',
                 type: '1 Bedroom Suite',
-                price: '₦55,000,000',
+                price: '₦50,000,000',
                 sqm: '95',
                 description: 'Chic urban retreat with high rental demand and appreciation.',
                 features: ['Compact Luxury', 'Fully Fitted', 'High Yield']

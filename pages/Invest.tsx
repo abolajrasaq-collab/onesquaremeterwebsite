@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import { projects, ProjectData } from '../data/projects';
 import {
     Search, SlidersHorizontal, TrendingUp, MapPin, Users, ArrowUpRight,
-    ChevronDown, X, DollarSign, Filter, Building2, GraduationCap, Home, Star
+    ChevronDown, X, DollarSign, Filter, Building2, GraduationCap, Home, Star,
+    Download, CreditCard, ClipboardCheck, PhoneCall, Mail, CheckCircle2
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -339,6 +340,109 @@ const Invest: React.FC = () => {
                         <p className="text-slate-400 text-sm">Try adjusting your filters or search terms.</p>
                     </div>
                 )}
+
+                {/* Investor Journey Section */}
+                <section className="mt-24 py-20 bg-white rounded-[2rem] border border-slate-100 shadow-xl overflow-hidden relative">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#FEC12C]/5 rounded-bl-full -z-0" />
+                    <div className="relative z-10 px-8 lg:px-16">
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-4 py-1.5 bg-[#325074]/10 text-[#325074] text-[10px] font-black tracking-widest uppercase mb-4 rounded-full">Process</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-[#325074] tracking-tighter mb-4">The Investor <span className="text-[#FEC12C]">Journey</span></h2>
+                            <p className="text-slate-500 max-w-xl mx-auto">A transparent, 6-step roadmap to securing your legacy with ONE SQUARE METER.</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
+                            {/* Connection Lines (Desktop) */}
+                            <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-0.5 bg-slate-100 -z-10" />
+                            
+                            {[
+                                { step: '01', title: 'Select Property', desc: 'Choose your preferred project and unit type from our curated portfolio.', icon: <Search className="w-6 h-6" /> },
+                                { step: '02', title: 'Download Form', desc: 'Get the official application form for your chosen project from our downloads page.', icon: <Download className="w-6 h-6" /> },
+                                { step: '03', title: 'Complete Details', desc: 'Fill in your details in block capitals and attach two recent passports.', icon: <ClipboardCheck className="w-6 h-6" /> },
+                                { step: '04', title: 'Make Payment', desc: 'Transfer your investment to the project-specific bank account (Providus/Zenith).', icon: <CreditCard className="w-6 h-6" /> },
+                                { step: '05', title: 'Submit Evidence', desc: 'Send your completed form and proof of payment to our project office.', icon: <Mail className="w-6 h-6" /> },
+                                { step: '06', title: 'Get Allocation', desc: 'Receive your official allocation letter from 1SQM legal representatives.', icon: <CheckCircle2 className="w-6 h-6" /> },
+                            ].map((item, idx) => (
+                                <div key={idx} className="relative group">
+                                    <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-[#FEC12C] mb-6 group-hover:bg-[#FEC12C] group-hover:text-[#325074] transition-all duration-300 shadow-sm relative z-10">
+                                        {item.icon}
+                                        <div className="absolute -top-2 -right-2 w-7 h-7 bg-[#325074] text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">
+                                            {item.step}
+                                        </div>
+                                    </div>
+                                    <h3 className="text-xl font-black text-[#325074] mb-2 tracking-tight">{item.title}</h3>
+                                    <p className="text-slate-500 text-sm leading-relaxed font-light">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Banking Details */}
+                <section className="mt-12 grid md:grid-cols-2 gap-8">
+                    <div className="bg-[#325074] p-10 rounded-[2rem] text-white shadow-xl relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full group-hover:bg-white/10 transition-colors" />
+                        <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
+                            <CreditCard className="text-[#FEC12C]" />
+                            Primary Investment Account
+                        </h3>
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-center py-3 border-b border-white/10">
+                                <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Bank</span>
+                                <span className="font-black text-lg">Providus Bank</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3 border-b border-white/10">
+                                <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Account Name</span>
+                                <span className="font-black text-lg">ONE SQUARE METER</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3">
+                                <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Account Number</span>
+                                <span className="font-black text-2xl tracking-tighter text-[#FEC12C]">1314980630</span>
+                            </div>
+                        </div>
+                        <p className="mt-8 text-white/40 text-[10px] leading-relaxed uppercase tracking-widest">
+                            * Use for Hostels, Vistas 106, Vistas 310, and Arcade projects.
+                        </p>
+                    </div>
+
+                    <div className="bg-white p-10 rounded-[2rem] text-[#325074] shadow-xl border border-slate-100 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#325074]/5 rounded-bl-full group-hover:bg-[#325074]/10 transition-colors" />
+                        <h3 className="text-2xl font-black mb-6 flex items-center gap-3 text-[#325074]">
+                            <CreditCard className="text-[#FEC12C]" />
+                            Vistas 2151 Account
+                        </h3>
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-center py-3 border-b border-slate-100">
+                                <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Bank</span>
+                                <span className="font-black text-lg">Zenith Bank</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3 border-b border-slate-100">
+                                <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Account Name</span>
+                                <span className="font-black text-lg">ONE SQUARE METER</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3">
+                                <span className="font-black text-2xl tracking-tighter text-[#325074]">5404533924</span>
+                            </div>
+                        </div>
+                        <p className="mt-8 text-slate-400 text-[10px] leading-relaxed uppercase tracking-widest">
+                            * Exclusive account for the Vistas 2151 (Lokogoma) project.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Final Help Call to Action */}
+                <section className="mt-20 text-center py-16 px-8 bg-[#FEC12C]/10 border-2 border-dashed border-[#FEC12C]/30 rounded-3xl">
+                    <h3 className="text-2xl font-black text-[#325074] mb-4 tracking-tight">Need Assistance with your Application?</h3>
+                    <p className="text-slate-600 mb-8 max-w-xl mx-auto">Our investment advisors are available to walk you through the documentation process or schedule a site visit.</p>
+                    <div className="flex flex-wrap justify-center gap-6">
+                        <a href="tel:09020020077" className="flex items-center gap-3 bg-[#325074] text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg">
+                            <PhoneCall size={20} /> 0902 002 0077
+                        </a>
+                        <Link to="/contact" className="flex items-center gap-3 bg-white text-[#325074] border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm">
+                            <Mail size={20} /> Contact Advisor
+                        </Link>
+                    </div>
+                </section>
             </div>
         </div>
     );

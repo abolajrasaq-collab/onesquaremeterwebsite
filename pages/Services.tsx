@@ -48,8 +48,8 @@ const Services: React.FC = () => {
             <section className="py-24 px-6 lg:px-12 bg-slate-50">
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Service 1: Property Development */}
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
                             <Building size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Property Development</h3>
@@ -64,8 +64,8 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Service 2: Investment Advisory */}
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
                             <TrendingUp size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Investment Advisory</h3>
@@ -80,8 +80,8 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Service 3: Facility Management */}
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
                             <Shield size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Facility Management</h3>
@@ -96,8 +96,8 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Service 4: Project Management */}
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
                             <Briefcase size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Project Management</h3>
@@ -107,8 +107,8 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Service 5: Joint Ventures */}
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
-                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                        <div className="w-14 h-14 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#325074] group-hover:text-white transition-colors">
                             <Users size={28} />
                         </div>
                         <h3 className="text-2xl font-bold text-[#325074] mb-4">Joint Ventures</h3>
@@ -125,7 +125,7 @@ const Services: React.FC = () => {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-5xl font-black text-white mb-8">Let's Discuss Your Project</h2>
                     <p className="text-white/70 text-lg mb-10">Whether you're looking to invest, build, or manage an asset, our team is ready to assist you.</p>
-                    <Link to="/contact" className="inline-block bg-[#FEC12C] text-[#325074] px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors">
+                    <Link to="/contact" className="inline-block bg-[#FEC12C] text-[#325074] px-10 py-4 rounded-lg font-bold text-lg hover:bg-white transition-colors">
                         Get in Touch
                     </Link>
                 </div>

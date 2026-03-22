@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
 
                         <Link
                             to={isAuthenticated ? '/portal/dashboard' : '/login'}
-                            className={`flex items-center gap-2 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${scrolled ? 'bg-[#325074] text-white hover:bg-[#FEC12C] hover:text-[#325074]' : 'bg-[#FEC12C] text-[#325074] hover:bg-white'}`}
+                            className={`flex items-center gap-2 px-8 py-3 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${scrolled ? 'bg-[#325074] text-white hover:bg-[#FEC12C] hover:text-[#325074]' : 'bg-[#FEC12C] text-[#325074] hover:bg-white'}`}
                         >
                             {isAuthenticated ? 'My Portal' : <><LogIn size={14} /> Owner Portal</>}
                         </Link>
@@ -143,7 +143,7 @@ const Navbar: React.FC = () => {
                         )}
                     </div>
                 ))}
-                <Link to={isAuthenticated ? '/portal/dashboard' : '/login'} className="mt-8 px-10 py-4 rounded-full bg-[#FEC12C] text-[#325074] font-black uppercase tracking-widest hover:bg-white transition-all" onClick={() => setIsMenuOpen(false)}>
+                <Link to={isAuthenticated ? '/portal/dashboard' : '/login'} className="mt-8 px-10 py-4 rounded-lg bg-[#FEC12C] text-[#325074] font-black uppercase tracking-widest hover:bg-white transition-all" onClick={() => setIsMenuOpen(false)}>
                     {isAuthenticated ? 'My Portal' : 'Owner Portal'}
                 </Link>
             </div>

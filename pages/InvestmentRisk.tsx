@@ -43,8 +43,8 @@ const InvestmentRisk: React.FC = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-8">
                         {risks.map((risk, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                                <div className="w-12 h-12 bg-[#325074]/10 text-[#325074] rounded-xl flex items-center justify-center mb-4">
+                            <div key={idx} className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
+                                <div className="w-12 h-12 bg-[#325074]/10 text-[#325074] rounded-lg flex items-center justify-center mb-4">
                                     {risk.icon}
                                 </div>
                                 <h3 className="text-xl font-bold text-[#325074] mb-3">{risk.title}</h3>
@@ -57,7 +57,7 @@ const InvestmentRisk: React.FC = () => {
 
             {/* Disclaimer */}
             <section className="py-16 px-6 lg:px-12 bg-white">
-                <div className="max-w-4xl mx-auto bg-amber-50 border border-amber-200 rounded-2xl p-8">
+                <div className="max-w-4xl mx-auto bg-amber-50 border border-amber-200 rounded-xl p-8">
                     <h3 className="text-xl font-bold text-[#325074] mb-4 flex items-center gap-3">
                         <AlertTriangle className="text-amber-500" /> Important Disclaimer
                     </h3>

@@ -103,9 +103,8 @@ const Home: React.FC = () => {
                             transition={{ delay: 0.7, duration: 0.8 }}
                             className="text-7xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter"
                         >
-                            CRAFTING<br />
-                            <span className="text-[#FEC12C]">LEGACIES</span><br />
-                            IN SQM.
+                            ARCHITECTURE OF<br />
+                            <span className="text-[#FEC12C]">POSSIBILITY.</span>
                         </motion.h1>
 
                         <motion.p
@@ -114,7 +113,7 @@ const Home: React.FC = () => {
                             transition={{ delay: 0.9, duration: 0.8 }}
                             className="text-xl text-white/70 font-light max-w-xl leading-relaxed"
                         >
-                            Welcome to One Square Meter by Dantata. Crafting Legacies, One Square Meter at a Time. Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
+                            Welcome to 1SQM by Dantata. We don't just build; we transform. We turn 1sqm of land into a portal for generational wealth, engineering ecosystems of prosperity where precision meets audacity.
                         </motion.p>
 
                         <motion.div
@@ -189,16 +188,13 @@ const Home: React.FC = () => {
 
                             <div className="space-y-6 text-xl text-slate-500 font-light leading-relaxed">
                                 <p>
-                                    Welcome to One Square Meter by Dantata. Crafting Legacies, One Square Meter at a Time.
+                                    Welcome to 1SQM by Dantata. We don't just build; we transform. Every square meter we touch is a calculated step toward generational wealth.
                                 </p>
                                 <p>
-                                    Redefining Abuja’s skyline with precision and audacity for the discerning elite and visionary investor, One Square Meter delivers more than homes, we curate appreciating assets and uncompromising luxury.
+                                    Redefining Abuja’s skyline with precision and audacity, One Square Meter delivers more than homes; we curate appreciating assets and uncompromising luxury for the visionary investor.
                                 </p>
                                 <p>
-                                    From elite enclaves to self-complete intentional communities, our projects blend avant-garde design with relentless ROI. Backed by industry trust and tested by economic storms, we thrive where others falter.
-                                </p>
-                                <p>
-                                    This is real estate reimagined: bold, resilient, and crafted to transcend generations.
+                                    Backed by the legacy of Dantata & Sawoe and tested by economic storms, we thrive where others falter. This is real estate reimagined: bold, resilient, and crafted to transcend generations.
                                 </p>
                             </div>
 
@@ -216,6 +212,74 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </motion.div>
+            </section>
+
+            {/* 02.1 THE MAGICIAN'S LOGIC: THE ARCHITECTURE OF POSSIBILITY */}
+            <section className="py-32 bg-[#325074] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FEC12C]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+                <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <span className="text-[#FEC12C] font-black tracking-[0.4em] uppercase text-xs mb-6 block">THE ARCHETYPE</span>
+                            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-8">
+                                THE LOGIC OF<br />
+                                THE <span className="text-[#FEC12C]">MAGICIAN.</span>
+                            </h2>
+                            <div className="space-y-6 text-xl text-white/60 font-light leading-relaxed">
+                                <p>
+                                    At 1SQM, we believe that real estate is the most powerful tool for engineering a life of freedom. Our philosophy, the <span className="text-white font-bold italic">Architecture of Possibility</span>, is rooted in the belief that every square meter holds the potential for transformation.
+                                </p>
+                                <p>
+                                    We don't just allocate space; we create life from land. We take the raw potential of the Nigerian soil and refine it into a vessel for your ambition. This is the alchemy of ownership.
+                                </p>
+                            </div>
+                            <div className="mt-12 flex gap-8">
+                                <div className="space-y-2">
+                                    <p className="text-3xl font-black text-white">100%</p>
+                                    <p className="text-[10px] text-[#FEC12C] font-black uppercase tracking-widest">Ethical Transparency</p>
+                                </div>
+                                <div className="h-12 w-px bg-white/10" />
+                                <div className="space-y-2">
+                                    <p className="text-3xl font-black text-white">₦50B+</p>
+                                    <p className="text-[10px] text-[#FEC12C] font-black uppercase tracking-widest">AUM Pipeline</p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className="relative"
+                        >
+                            <div className="aspect-square bg-white/5 rounded-[3rem] border border-white/10 p-4 relative">
+                                <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative group">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" 
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" 
+                                        alt="Modern Architecture Transformation" 
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#325074] via-transparent to-transparent" />
+                                </div>
+                                {/* Floating Element */}
+                                <motion.div
+                                    animate={{ y: [0, -20, 0] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    className="absolute -top-10 -left-10 bg-[#FEC12C] p-8 rounded-3xl shadow-2xl hidden md:block"
+                                >
+                                    <Quote className="w-8 h-8 text-[#325074]" />
+                                    <p className="text-[#325074] font-black text-lg tracking-tight mt-4">"We create<br />life from land."</p>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
             </section>
 
             {/* 02B. BOARD OF DIRECTORS */}

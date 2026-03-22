@@ -34,7 +34,7 @@ const LegalDisclosure: React.FC = () => {
             {/* Legal Content */}
             <section className="py-24 px-6 lg:px-12 bg-slate-50">
                 <div className="max-w-4xl mx-auto space-y-12">
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <FileText className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">Intellectual Property</h3>
@@ -45,7 +45,7 @@ const LegalDisclosure: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <Info className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">Information Disclaimer</h3>
@@ -56,7 +56,7 @@ const LegalDisclosure: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <Scale className="text-[#325074]" />
                             <h3 className="text-xl font-bold text-[#325074]">Governing Law</h3>
